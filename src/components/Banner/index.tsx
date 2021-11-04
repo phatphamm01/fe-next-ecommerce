@@ -33,7 +33,7 @@ const Banner = () => {
           <HighlightTextSecond>Nhanh tay đăng kí</HighlightTextSecond>
           <Description>
             Bạn còn đang lo lắng về số dư trong tài khoản của mình mà không biết
-            nên làm gì với chúng. Hãy đến với chúng tôi để ring ngay nhiều phần
+            nên làm gì với chúng. Hãy đến với chúng tôi để ring ngay những phần
             quà hấp dẫn và nhiều ưu đãi khác
           </Description>
           <ButtonContainer>
