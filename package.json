@@ -8,15 +8,30 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "accounting": "^0.4.1",
+    "bignumber.js": "^9.0.1",
     "next": "12.0.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.43.4",
+    "styled-components": "^5.3.3",
+    "swr": "^1.0.1",
+    "twin.macro": "^2.8.1"
   },
   "devDependencies": {
+    "@types/accounting": "^0.4.2",
     "@types/node": "16.11.6",
     "@types/react": "17.0.33",
+    "@types/styled-components": "^5.1.15",
+    "autoprefixer": "^10.4.0",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-styled-components": "^1.13.3",
     "eslint": "7",
     "eslint-config-next": "12.0.2",
+    "postcss": "^8.3.11",
+    "react-is": "^17.0.2",
+    "tailwindcss": "^2.2.19",
     "typescript": "4.4.4"
   }
 }
