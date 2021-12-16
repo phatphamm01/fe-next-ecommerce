@@ -10,6 +10,7 @@ import tw from "twin.macro";
 import Input from "../components/InputAuth";
 import Layout from "../components/Layout";
 import Verify from "../../../components/Verify/index";
+import fetchUser from "services/user/auth";
 
 const LoginForm = styled.form`
   ${tw`lg:mx-10 mx-20 mt-12 grid gap-4`}
@@ -45,7 +46,7 @@ const Login = () => {
     );
   };
 
-  const JSXVerify: React.FC<any> = (email: string) => {
+  const JSXVerify = (email: string) => {
     return (
       <Verify
         headerTitle="Xác nhận Thiết Bị"
@@ -63,7 +64,7 @@ const Login = () => {
   };
 
   const handleVerify = (email: string) => {
-    setHtml?.(<JSXVerify email={email} />);
+    setHtml?.(JSXVerify(email));
   };
 
   return (
@@ -71,10 +72,14 @@ const Login = () => {
       <Formik
         initialValues={{
           email: "minhphatdev@gmail.com",
-          password: "12345678",
+          password: ".Phat2001",
         }}
-        onSubmit={(values) => {
-          handleVerify(values.email);
+        onSubmit={async (values) => {
+          try {
+            const reponse = await fetchUser.signin(values);
+            debugger;
+            handleVerify(values.email);
+          } catch (error) {}
         }}
       >
         {(props) => {
