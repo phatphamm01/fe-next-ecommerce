@@ -3,14 +3,14 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/home',
+        source: "/",
+        destination: "/home",
         permanent: true,
       },
     ];
   },
   images: {
-    domains: ['cdn.dribbble.com'],
+    domains: ["cdn.dribbble.com"],
   },
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
@@ -20,6 +20,11 @@ module.exports = {
         fs: false,
       };
     }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
 
     return config;
   },

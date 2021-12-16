@@ -1,20 +1,15 @@
-import Banner from 'components/Banner';
-import Layout from 'components/Layout';
-import Tool from 'components/Tool';
-import Meta from 'design/Meta';
-import type { NextPage } from 'next';
-import { Fragment } from 'react';
+import Home from "container/Home";
+import Meta from "design/Meta";
+import type { NextPage } from "next";
+import { Fragment } from "react";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
     <Fragment>
       <Meta title="Trang chủ" />
-      <Layout>
-        <Banner />
-        <Tool />
-      </Layout>
+      <Home />
     </Fragment>
   );
 };
 
-export default Home;
+export default HomePage;

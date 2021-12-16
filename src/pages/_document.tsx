@@ -1,11 +1,11 @@
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet } from "styled-components";
 import Document, {
   Html,
   Head,
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document';
+} from "next/document";
 
 class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -49,11 +49,11 @@ class AppDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600&display=swap"
             rel="stylesheet"
           ></link>
-          <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
-          <link
-            href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-            rel="stylesheet"
-          ></link>
+
+          <script
+            src="https://kit.fontawesome.com/e4a93c06ca.js"
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />

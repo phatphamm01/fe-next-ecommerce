@@ -1,17 +1,17 @@
-import { Fragment } from 'react';
-import { NextPage } from 'next';
+import { Fragment } from "react";
+import { NextPage } from "next";
 
-import LoginPage from 'container/LoginPage';
+import Login from "container/auth/Login";
 
-import Meta from 'design/Meta';
+import Meta from "design/Meta";
 
-const Login: NextPage = () => {
+const LoginPage: NextPage = () => {
   return (
     <Fragment>
       <Meta title="Đăng nhập" />
-      <LoginPage />
+      <Login />
     </Fragment>
   );
 };
 
-export default Login;
+export default LoginPage;

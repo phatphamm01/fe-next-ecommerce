@@ -1,30 +1,51 @@
-import Button from 'design/Button';
-import Input from 'design/Input';
-import Title from 'design/Title';
-import { useRef, useState } from 'react';
-import styled from 'styled-components';
-import tw from 'twin.macro';
+import Button from "design/Button";
+import DateSelect from "design/DateSelect";
+import Input from "design/Input";
+import Title from "design/Title";
+import { memo, useRef, useState } from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
 
-const bignumber = require('bignumber.js').BigNumber;
+const bignumber = require("bignumber.js").BigNumber;
 
-const ToolContainer = tw.section`container mx-auto my-20`;
-const TitlteContainer = tw.div`text-center mb-20`;
-const ToolMain = tw.div`grid lg:grid-cols-2`;
-const FormContainer = tw.div`mb-10 lg:mb-0 mx-10 md:mx-20 lg:mx-10 xl:mx-20 2xl:mx-32 flex flex-col gap-6`;
-const FormContent = tw.p`text-xs text-gray-600`;
-const RenderTool = tw.div`mx-10 md:mx-20 lg:mx-10 xl:mx-20 2xl:mx-32`;
-const RenderBox = styled.div(() => [
-  tw`w-full h-[350px] bg-white p-12`,
-  `
+const ToolContainer = styled.section`
+  ${tw`container mx-auto my-20`}
+`;
+const TitlteContainer = styled.div`
+  ${tw`text-center mb-20`}
+`;
+const ToolMain = styled.div`
+  ${tw`grid lg:grid-cols-1 grid-cols-2`}
+`;
+const FormContainer = styled.div`
+  ${tw` mb-0 lg:mb-10 mx-32 2xl:mx-20 xl:mx-10 flex flex-col gap-6`}
+`;
+const FormContent = styled.p`
+  ${tw`text-xs text-gray-600`}
+`;
+const RenderTool = styled.div`
+  ${tw`self-center mx-32 2xl:mx-20 xl:mx-10`}
+`;
+const RenderBox = styled.div`
+  ${tw`w-full h-[380px] bg-white p-12`}
   box-shadow: 0px 15px 20px rgba(220, 38, 38, 0.25);
   border-radius: 20px;
-`,
-]);
-const ButtonContainer = tw.div`mt-20 lg:mt-28 text-center`;
-const CalcTitle = tw.p`text-gray-500 mb-4`;
-const CalcValue = tw.div`text-red-600 text-5xl font-bold mb-10`;
-const InterestReceive = tw.span`line-clamp-1 overflow-ellipsis block`;
-const Unit = tw.sup`text-3xl`;
+`;
+const ButtonContainer = styled.div`
+  ${tw`mt-20 lg:mt-28 mx-auto w-[200px]`}
+`;
+const CalcTitle = styled.p`
+  ${tw`text-gray-500 mb-4`}
+`;
+const CalcValue = styled.div`
+  ${tw`text-red-600 text-5xl font-bold mb-10`}
+`;
+const InterestReceive = styled.span`
+  ${tw`line-clamp-1 overflow-ellipsis block`}
+`;
+const Unit = styled.sup`
+  ${tw`text-3xl`}
+`;
 
 const Tool = () => {
   const deposits = useRef<number>(0);
@@ -54,24 +75,24 @@ const Tool = () => {
       receiver: receiver
         .decimalPlaces(0)
         .toString()
-        .replace(/(.)(?=(\d{3})+$)/g, '$1,'),
+        .replace(/(.)(?=(\d{3})+$)/g, "$1,"),
       totalMoney: totalMoney
         .decimalPlaces(0)
         .toString()
-        .replace(/(.)(?=(\d{3})+$)/g, '$1,'),
+        .replace(/(.)(?=(\d{3})+$)/g, "$1,"),
     };
   };
 
   const numberToMoney = (num: number & { c?: number }): string => {
     const checkNaN = !num?.c || num === 0;
 
-    return checkNaN ? '' : String(num).replace(/(.)(?=(\d{3})+$)/g, '$1,');
+    return checkNaN ? "" : String(num).replace(/(.)(?=(\d{3})+$)/g, "$1,");
   };
 
   const numberToString = (num: number & { c?: number }): string => {
     const checkNaN = !num?.c || num === 0;
 
-    return checkNaN ? '' : String(num);
+    return checkNaN ? "" : String(num);
   };
 
   const stringToNumber = (text: string, length?: number): number => {
@@ -80,7 +101,7 @@ const Tool = () => {
     }
 
     let numb = text.match(/\d|e/g);
-    let numberClear = numb ? numb.join('') : '';
+    let numberClear = numb ? numb.join("") : "";
     return bignumber(numberClear);
   };
 

@@ -1,30 +1,43 @@
-import { ReactChild, RefObject, useRef } from 'react';
-import tw from 'twin.macro';
+import { CSSProperties, ReactChild, RefObject, useRef } from "react";
+import tw from "twin.macro";
+import styled from "styled-components";
 
-const InputContainer = tw.div`text-gray-600`;
-const Label = tw.label``;
-const InputBox = tw.div`relative border-b border-b-gray-400 text-sm`;
-const InputText = tw.input`outline-none w-full pb-3 pt-2 font-bold text-2xl text-red-600`;
-const InputLeft = tw.div`absolute top-1/2 -translate-y-1/2 right-0`;
+const InputContainer = styled.div`
+  ${tw`text-gray-600`}
+`;
+const Label = styled.label`
+  ${tw``}
+`;
+const InputBox = styled.div`
+  ${tw`relative border-b border-b-gray-400 text-sm`}
+`;
+const InputText = styled.input`
+  ${tw`outline-none w-full pb-3 pt-2 font-bold text-2xl text-red-600`}
+`;
+const InputLeft = styled.div`
+  ${tw`absolute top-1/2 -translate-y-1/2 right-0`}
+`;
 
 interface IInput {
   name: string;
   value?: string;
   title: string;
   onChange?: (value: string, ref: RefObject<HTMLInputElement>) => void;
-  type: 'text' | 'number';
+  type: "text" | "number";
   placeholder?: string;
   iconLeft?: ReactChild;
+  style?: CSSProperties;
 }
 
 const Input = ({
   name,
   title,
-  type = 'text',
+  type = "text",
   placeholder,
   value,
   onChange,
   iconLeft,
+  style,
 }: IInput) => {
   const ref = useRef<HTMLInputElement>(null);
   return (
@@ -32,6 +45,7 @@ const Input = ({
       <Label htmlFor={name}>{title}</Label>
       <InputBox>
         <InputText
+          style={style}
           autoComplete="off"
           type={type}
           id={name}

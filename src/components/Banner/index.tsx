@@ -1,20 +1,33 @@
-import tw from 'twin.macro';
-import Image from 'next/image';
-import Button from 'design/Button';
-import LinkNext from 'design/Link';
+import Image from "next/image";
+import Button from "design/Button";
+import LinkNext from "design/Link";
+import styled from "styled-components";
+import tw from "twin.macro";
 
-const BannerContainer = tw.section`
-  h-[628px] bg-red-100 mt-3
+const BannerContainer = styled.section`
+  ${tw`h-[628px] bg-red-100 mt-3`}
 `;
-const BannerMain = tw.div`h-full container mx-auto  grid lg:grid-cols-2  px-10 md:px-32 lg:px-0 items-center`;
-
-const ImageContainer = tw.div`hidden lg:block text-center`;
-const ContentContainer = tw.div`w-[100%] xl:w-[540px]`;
-const HighlightTextFirst = tw.h2`text-4xl sm:text-5xl font-bold text-red-600 mb-2`;
-const HighlightTextSecond = tw.h2`pl-16 text-4xl sm:text-5xl font-bold text-red-400 mb-4`;
-const Description = tw.p`mb-6 text-gray-900 font-light`;
-
-const ButtonContainer = tw.div`text-center`;
+const BannerMain = styled.div`
+  ${tw`h-full container mx-auto grid grid-cols-2 lg:grid-cols-1 lg:px-32 md:px-10 items-center`}
+`;
+const ImageContainer = styled.div`
+  ${tw`lg:hidden block text-center`}
+`;
+const ContentContainer = styled.div`
+  ${tw`xl:w-[100%] w-[540px]`}
+`;
+const HighlightTextFirst = styled.h2`
+  ${tw`sm:text-4xl text-5xl font-bold text-red-600 mb-2`}
+`;
+const HighlightTextSecond = styled.h2`
+  ${tw`pl-16 sm:text-4xl text-5xl font-bold text-red-400 mb-4`}
+`;
+const Description = styled.p`
+  ${tw`mb-6 text-gray-900 font-light`}
+`;
+const ButtonContainer = styled.div`
+  ${tw`mx-auto w-[200px]`}
+`;
 
 const Banner = () => {
   return (
@@ -37,7 +50,7 @@ const Banner = () => {
             quà hấp dẫn và nhiều ưu đãi khác
           </Description>
           <ButtonContainer>
-            <LinkNext href="/login">
+            <LinkNext href="/signup">
               <Button variant="container">Đăng kí ngay</Button>
             </LinkNext>
           </ButtonContainer>
