@@ -17,6 +17,7 @@ import { useStore } from "react-redux";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import useToggleAndCloseVer2 from "hook/useToggleAndCloseVer2";
+import "@fortawesome/fontawesome-free";
 
 const Wrapper = styled.div<{ isPopup: boolean }>`
   ${tw``}
