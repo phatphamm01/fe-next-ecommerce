@@ -20,11 +20,13 @@ const SelectBox = styled.div`
 
 const ErrorMessage = styled.div`
   ${tw`text-red-500 pt-1 h-3`}
+  background: #f4f5f6;
 `;
 
 const colourStyles: StylesConfig = {
   control: (styles) => ({
     ...styles,
+    background: "#f4f5f6",
     border: "none",
     borderRadius: "none",
     borderBottom: "3px solid rgb(239, 68, 68)",
