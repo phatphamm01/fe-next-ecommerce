@@ -13,6 +13,7 @@ const InputBox = styled.div`
 `;
 const InputText = styled.input`
   ${tw`outline-none w-full pb-3 pt-2 font-bold text-2xl text-red-600`}
+  background-color: #f4f5f6;
 `;
 const InputLeft = styled.div`
   ${tw`absolute top-1/2 -translate-y-1/2 right-0`}

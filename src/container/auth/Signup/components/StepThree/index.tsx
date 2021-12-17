@@ -1,8 +1,5 @@
 import checkNullObject from "common/function/checkNullObject";
-import Verify from "components/Verify";
-import Input from "container/Auth/components/InputAuth";
 import Button from "design/Button";
-import Link from "design/Link";
 import Select from "design/Select";
 import { Formik } from "formik";
 import { useAppDispatch, useAppSelector } from "hook/redux";
