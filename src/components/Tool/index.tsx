@@ -1,10 +1,9 @@
 import Button from "design/Button";
-import DateSelect from "design/DateSelect";
-import Input from "design/Input";
 import Title from "design/Title";
 import { memo, useRef, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import Input from "./components/Input";
 
 const bignumber = require("bignumber.js").BigNumber;
 
