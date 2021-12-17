@@ -47,6 +47,10 @@ class AxiosService {
         return response;
       },
       (error: AxiosError) => {
+        if (error.message === "Request failed with status code 401") {
+          location.href = "/login";
+        }
+
         return Promise.reject(handleError(error));
       }
     );

@@ -53,10 +53,8 @@ const Login = () => {
         headerContent="qua tài khoản email"
         content={
           <>
-            Vui lòng lấy mã code từ email:{" "}
-            <Link href="http://www.gmail.com">{email}</Link> để xác nhận quá
-            trình đăng nhập . Nếu không có mail vui lòng kiểm tra hộp thư mail
-            spam
+            Vui lòng lấy mã code từ điện thoại của bạn để xác thực đăng nhập .
+            Nếu không có mã vui lòng đăng nhập lại.
           </>
         }
       />
@@ -76,8 +74,8 @@ const Login = () => {
         }}
         onSubmit={async (values) => {
           try {
-            const reponse = await fetchUser.signin(values);
-            debugger;
+            const response = await fetchUser.signin(values);
+
             handleVerify(values.email);
           } catch (error) {}
         }}

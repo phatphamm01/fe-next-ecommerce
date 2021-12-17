@@ -1,4 +1,4 @@
-import Input from "container/auth/components/InputAuth";
+import Input from "container/Auth/components/InputAuth";
 import Button from "design/Button";
 import Link from "design/Link";
 import { Formik } from "formik";

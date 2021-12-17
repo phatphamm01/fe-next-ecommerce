@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { NextPage } from "next";
 
-import Login from "container/auth/Login";
+import Login from "container/Auth/Login";
 
 import Meta from "design/Meta";
 

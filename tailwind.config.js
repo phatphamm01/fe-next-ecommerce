@@ -1,10 +1,18 @@
-const { colors: defaultColors } = require("tailwindcss/defaultTheme");
+const {
+  colors: defaultColors,
+  boxShadow,
+} = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: ["./**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        ...boxShadow,
+        card: "0 12px 17px rgb(0 0 0 / 4%), 0 5px 24px rgb(0 0 0 / 10%), 0 7px 8px rgb(0 0 0 / 4%)",
+      },
+    },
     screens: {
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }

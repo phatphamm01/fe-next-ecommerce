@@ -4,6 +4,9 @@ import styled, { keyframes } from "styled-components";
 import Input from "design/Input";
 import Button from "design/Button";
 import { PopupContext } from "pages/_app";
+import { Formik } from "formik";
+import fetchUser from "services/user/auth";
+import { useRouter } from "next/router";
 
 const top = keyframes`
   from {
@@ -41,8 +44,8 @@ const HeaderContext = styled.i`
 const HeaderIcon = styled.i`
   ${tw`text-3xl text-white mb-1`}
 `;
-const Main = styled.div`
-  ${tw`px-12 py-8`}
+const Main = styled.form`
+  ${tw`px-12 py-8 `}
 `;
 const Content = styled.p`
   ${tw`mt-4 text-gray-600 text-sm `}
@@ -61,6 +64,7 @@ interface IVerify {
 }
 
 const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
+  const router = useRouter();
   const { setHtml, closePopup } = useContext(PopupContext);
   return (
     <VerifyContainer>
@@ -69,22 +73,62 @@ const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
         <HeaderTitle>{headerTitle}</HeaderTitle>
         <HeaderContext>{headerContent}</HeaderContext>
       </Header>
-      <Main>
-        <Input
-          style={{ fontSize: "18px", paddingBottom: "4px" }}
-          placeholder="Code"
-          title=""
-          name=""
-          type="text"
-        />
-        <Content>{content}</Content>
-        <MainControl>
-          <Button onClick={() => closePopup?.()} variant="outlined">
-            Trở lại
-          </Button>
-          <Button variant="container">Xác nhận</Button>
-        </MainControl>
-      </Main>
+      <Formik
+        initialValues={{
+          code: "",
+        }}
+        onSubmit={async (values) => {
+          try {
+            const { data } = await fetchUser.verify(values);
+            let { accessToken = "" } = data;
+
+            if (accessToken) {
+              localStorage.setItem("token", data?.accessToken);
+              router.push("/user");
+            }
+            closePopup?.();
+          } catch (error) {}
+        }}
+      >
+        {(props) => {
+          const {
+            values,
+            touched,
+            errors,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          } = props;
+
+          return (
+            <Main onSubmit={handleSubmit}>
+              <Input
+                name="code"
+                placeholder="Code"
+                type="text"
+                value={values.code}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                errors={errors.code}
+                touched={touched.code}
+              />
+              <Content>{content}</Content>
+              <MainControl>
+                <Button
+                  type="button"
+                  onClick={() => closePopup?.()}
+                  variant="outlined"
+                >
+                  Trở lại
+                </Button>
+                <Button type="submit" variant="container">
+                  Xác nhận
+                </Button>
+              </MainControl>
+            </Main>
+          );
+        }}
+      </Formik>
     </VerifyContainer>
   );
 };

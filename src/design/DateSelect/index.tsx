@@ -1,4 +1,4 @@
-import Input from "container/auth/components/InputAuth";
+import Input from "container/Auth/components/InputAuth";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import tw from "twin.macro";

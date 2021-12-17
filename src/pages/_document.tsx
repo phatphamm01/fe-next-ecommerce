@@ -46,11 +46,11 @@ class AppDocument extends Document {
             crossOrigin=""
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800&display=swap"
             rel="stylesheet"
           ></link>
         </Head>
-        <body>
+        <body style={{ backgroundColor: "#f4f5f6" }}>
           <Main />
           <NextScript />
         </body>
