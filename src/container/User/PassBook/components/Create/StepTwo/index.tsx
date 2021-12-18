@@ -43,6 +43,7 @@ const StepTwo: FC<ICreate> = ({ closePopup, handleGetAllPassbook }) => {
   const [bookNumber, setBookNumber] = useState<string>();
   const [dataTable, setDataTable] = useState<any>(data);
   const [loading, setLoading] = useState<boolean>(false);
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
 
   useEffect(() => {
     setBookNumber(data?.suggest + "");
@@ -77,12 +78,15 @@ const StepTwo: FC<ICreate> = ({ closePopup, handleGetAllPassbook }) => {
 
   const handleSubmit = async () => {
     try {
+      setLoadingSubmit(true);
       const { data } = await fetchCart.checkout();
       handleGetAllPassbook?.();
       closePopup();
       toast.success("Tạo số tiết kiệm thành công");
     } catch (error: any) {
       toast.error(error?.message || "Lỗi");
+    } finally {
+      setLoadingSubmit(false);
     }
   };
 
@@ -116,7 +120,11 @@ const StepTwo: FC<ICreate> = ({ closePopup, handleGetAllPassbook }) => {
             <Button variant="outlined" onClick={handleStep}>
               Trở lại
             </Button>
-            <Button variant="container" onClick={handleSubmit}>
+            <Button
+              disabled={loadingSubmit || loading}
+              variant="container"
+              onClick={handleSubmit}
+            >
               Mở
             </Button>
           </Control>

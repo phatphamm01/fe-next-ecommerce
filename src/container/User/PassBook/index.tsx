@@ -90,22 +90,6 @@ const PassBook: FC<IPassBook> = () => {
     closePopup?.();
   };
 
-  const handleWithdrawal = async (id: string) => {
-    let ok = confirm("Bạn chắc chắn muốn rút sổ này ?");
-    if (!ok) return;
-
-    try {
-      await fetchPassbook.withdrawMoney({
-        passbookid: id,
-      });
-
-      toast.success("Rút tiền thành công !");
-      handleGetAllPassbook();
-    } catch (error) {
-      toast.error("Rút tiền thất bại !");
-    }
-  };
-
   return (
     <Layout>
       <PassBookContainer>
@@ -121,7 +105,7 @@ const PassBook: FC<IPassBook> = () => {
           ) : passbookList.length > 0 ? (
             <List>
               {passbookList.map((value) => (
-                <Item handleWithdrawal={handleWithdrawal} data={value} />
+                <Item data={value} />
               ))}
             </List>
           ) : (

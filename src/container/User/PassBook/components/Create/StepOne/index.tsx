@@ -16,6 +16,7 @@ import convertStringToMoney, {
 } from "common/function/convertStringToMoney";
 import fetchCart from "services/cart";
 import { toast } from "react-toastify";
+import IconLoading from "design/IconLoading";
 
 const StepOneContainer = styled.div`
   ${tw``}
@@ -34,7 +35,7 @@ const TermBox = styled.div`
   ${tw``}
 `;
 const TermList = styled.ul`
-  ${tw`flex justify-between`}
+  ${tw`flex gap-2 flex-wrap justify-between`}
 `;
 const TermItem = styled.li<{ isActive?: boolean }>`
   ${tw`cursor-pointer py-2 w-[60px] text-center border-[1px] rounded-[20px] border-red-300 text-red-500`}
@@ -68,6 +69,8 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     value?: number;
   }>({});
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (data?.deposits) {
       setInput(data.deposits + "");
@@ -91,7 +94,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
       return;
     }
 
-    let month = annual?.option || 0;
+    let month = annual?.option || 1;
     let profit = annual?.value || 1;
     let openDate = moment();
     let endDate = moment().add(month, "month");
@@ -100,7 +103,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     let numberClear: any = numb ? numb.join("") : "";
     numberClear = Number(numberClear);
 
-    let totalProfit = (Number(numberClear) * profit) / 100;
+    let totalProfit = (Number(numberClear) * profit) / 100 / month;
     let result = Number(numberClear) + totalProfit;
 
     const dataTable = {
@@ -155,6 +158,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     const payload = { option: annual.option!, deposits: numberClear };
 
     try {
+      setLoading(true);
       const { data } = await fetchCart.add(payload);
       const { success } = data;
       if (!success) {
@@ -168,6 +172,8 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
       setStep?.(2);
     } catch (error: any) {
       toast.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -212,7 +218,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
           )}
         </TableBox>
         <ControlBox>
-          <Button variant="container" onClick={handleSubmit}>
+          <Button disabled={loading} variant="container" onClick={handleSubmit}>
             Tiếp tục
           </Button>
           <Button variant="outlined" onClick={closePopup}>

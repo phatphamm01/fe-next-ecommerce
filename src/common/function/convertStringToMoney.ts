@@ -5,7 +5,10 @@ export const numberToMoneyVer2 = (num: any) => {
     return 0;
   }
   if (num) {
-    return num?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    return (((num as number).toFixed(0) + "") as string).replace(
+      /(\d)(?=(\d{3})+(?!\d))/g,
+      "$1,"
+    );
   }
 };
 

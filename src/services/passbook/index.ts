@@ -2,7 +2,9 @@ import AxiosService from "common/utils/axios";
 
 const url = {
   getAll: "passbook/getpassbook",
-  getDetail: (payload: any) => `passbook/check/${payload.id}`,
+  getDetailPay: (payload: any) => `passbook/check/${payload.id}`,
+  getDetail: (payload: any) =>
+    `passbook/checkInformationpassbook/${payload.passbookid}`,
   withdrawMoney: (payload: any) =>
     `passbook/withdrawMoneyPassbook/${payload.passbookid}`,
 };
@@ -12,7 +14,11 @@ const fetchPassbook = {
     const response = await AxiosService.get(url.getAll);
     return response;
   },
-  async getDetail(payload: { id: string }) {
+  async getDetailPay(payload: { id: string }) {
+    const response = await AxiosService.get(url.getDetailPay(payload));
+    return response;
+  },
+  async getDetail(payload: { passbookid: string }) {
     const response = await AxiosService.get(url.getDetail(payload));
     return response;
   },

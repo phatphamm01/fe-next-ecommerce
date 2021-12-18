@@ -3,7 +3,7 @@ import Button from "design/Button";
 import Link from "design/Link";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
-import { FC, useState, useContext, useEffect } from "react";
+import { FC, useState, useContext } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { SignupContext } from "../../index";

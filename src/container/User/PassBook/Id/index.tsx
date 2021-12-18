@@ -11,6 +11,7 @@ import Table from "./components/Table";
 import { useRouter } from "next/router";
 import Link from "design/Link";
 import IconLoading from "design/IconLoading";
+import { toast } from "react-toastify";
 
 const PassBookContainer = styled.div`
   ${tw`max-w-[1000px] mx-auto `}
@@ -18,24 +19,27 @@ const PassBookContainer = styled.div`
 const Title = styled.p`
   ${tw`text-center font-semibold text-3xl py-12`}
 `;
-const PassBookBox = styled.div`
-  ${tw`h-[300px] mt-10`}
+const ControlBox = styled.div`
+  ${tw`flex items-center justify-between`}
+`;
+const Control = styled.div`
+  ${tw`flex gap-4`}
 `;
 const ButtonBox = styled.div`
-  ${tw`w-[200px] mb-2 mr-auto`}
+  ${tw`w-[200px]`}
 `;
-const MessageBox = styled.div`
-  ${tw`w-full h-full flex items-center justify-center`}
-`;
-const Message = styled.span`
-  ${tw`font-medium text-2xl`}
-`;
+
 const LoadingBox = styled.div`
   ${tw`h-[400px]`}
 `;
-
+const MessageBox = styled.div`
+  ${tw``}
+`;
+const Message = styled.span<{ active: boolean }>`
+  ${({ active }) => (active ? tw`text-red-500` : tw`text-green-500`)}
+`;
 const TableBox = styled.div`
-  ${tw`mt-8`}
+  ${tw`mt-6`}
 `;
 
 interface IPassBook {}
@@ -77,19 +81,53 @@ const PassBook: FC<IPassBook> = () => {
   };
 
   const getDetailPassbookApi = async (id: string) => {
-    const { data } = await fetchPassbook.getDetail({ id });
+    const { data } = await fetchPassbook.getDetailPay({ id });
     return data;
+  };
+
+  const handleWithdrawal = async (id: string) => {
+    let ok = confirm("Bạn chắc chắn muốn rút sổ này ?");
+    if (!ok) return;
+
+    try {
+      await fetchPassbook.withdrawMoney({
+        passbookid: id,
+      });
+
+      toast.success("Rút tiền thành công !");
+      handleGetAllPassbook();
+    } catch (error: any) {
+      toast.error(error);
+    }
   };
 
   return (
     <Layout>
       <PassBookContainer>
         <Title>Chi tiết sổ tiết kiệm</Title>
-        <ButtonBox>
-          <Link href={"/user/pass-book"}>
-            <Button variant="outlined">Quay lại</Button>
-          </Link>
-        </ButtonBox>
+        <ControlBox>
+          <MessageBox>
+            <b>Trạng thái:</b>{" "}
+            <Message active={passbook?.passbook.status}>
+              {passbook?.passbook.status ? "Đã rút" : "Chưa rút"}
+            </Message>
+          </MessageBox>
+          <Control>
+            <ButtonBox>
+              <Link href={"/user/pass-book"}>
+                <Button variant="outlined">Quay lại</Button>
+              </Link>
+            </ButtonBox>
+            <ButtonBox>
+              <Button
+                onClick={() => handleWithdrawal(id as string)}
+                variant="container"
+              >
+                Xác nhận rút
+              </Button>
+            </ButtonBox>
+          </Control>
+        </ControlBox>
 
         {loading ? (
           <LoadingBox>
