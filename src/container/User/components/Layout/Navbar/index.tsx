@@ -1,14 +1,17 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { PopupContext } from "pages/_app";
+import Box from "design/Box";
+import Recharge from "container/User/components/Recharge";
 
 const NavbarContainer = styled.div`
   ${tw``}
 `;
 
 const MobileContainer = styled.div<{ active: boolean }>`
-  ${tw`fixed h-full w-[220px] bg-red-600 z-20 transition right-0 `}
+  ${tw`fixed h-[calc(100vh - 56px)] w-[220px] bg-red-600 z-20 transition right-0 `}
   ${({ active }) => (active ? tw`translate-x-[0]` : tw`translate-x-[220px]`)}
 `;
 
@@ -29,9 +32,11 @@ const NavItem = styled.li`
 
 interface INavbar {
   isActive: boolean;
+  handleNav: () => void;
 }
 
-const Navbar: FC<INavbar> = ({ isActive }) => {
+const Navbar: FC<INavbar> = ({ isActive, handleNav }) => {
+  const { setHtml, closePopup } = useContext(PopupContext);
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -39,11 +44,21 @@ const Navbar: FC<INavbar> = ({ isActive }) => {
     router.push("/home");
   };
 
+  const handleRecharge = () => {
+    handleNav();
+    const component = (
+      <Box title="Nạp tiền">
+        <Recharge />
+      </Box>
+    );
+    setHtml?.(component);
+  };
+
   return (
     <NavbarContainer>
       <MobileContainer active={isActive}>
         <NavList>
-          <NavItem>
+          <NavItem onClick={handleRecharge}>
             <i className="fas fa-money-bill-alt"></i>
             <span>Nạp tiền</span>
           </NavItem>

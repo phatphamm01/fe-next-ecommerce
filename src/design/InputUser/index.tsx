@@ -12,7 +12,7 @@ const InputBox = styled.div`
   ${tw`relative border-b border-b-gray-400 text-sm`}
 `;
 const InputText = styled.input`
-  ${tw`outline-none w-full pb-3 pt-2 font-bold text-2xl text-red-600`}
+  ${tw`outline-none w-full pb-1 pt-2 font-semibold text-lg text-red-600`}
 `;
 const InputLeft = styled.div`
   ${tw`absolute top-1/2 -translate-y-1/2 right-0`}
@@ -37,7 +37,7 @@ interface IInput {
   styledInput?: CSSProperties;
 }
 
-const Input = ({
+const InputUser = ({
   name,
   title,
   type = "text",
@@ -78,4 +78,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default InputUser;

@@ -6,6 +6,7 @@ import fetchUser from "services/user/auth";
 import { useEffect, useState } from "react";
 import checkNullObject from "common/function/checkNullObject";
 import Skeleton from "react-loading-skeleton";
+import { numberToMoneyVer2 } from "common/function/convertStringToMoney";
 
 const UserContainer = styled.div`
   ${tw``}
@@ -50,7 +51,11 @@ const User: FC<IUser> = () => {
           <InfoItem key={value.id}>
             {!checkNullObject(data) ? (
               <>
-                <b>{value.title}</b> : {data?.[value.id]} {affterText}
+                <b>{value.title}</b> :{" "}
+                {affterText
+                  ? data?.[value.id] && numberToMoneyVer2(data?.[value.id])
+                  : data?.[value.id]}{" "}
+                {affterText}
               </>
             ) : (
               <Skeleton />

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@paypal/react-paypal-js": "^7.5.0",
     "@redux-ts-starter-kit/slice": "^3.0.7-alpha.0",
     "@reduxjs/toolkit": "^1.6.2",
     "@svgr/webpack": "^5.5.0",
@@ -29,6 +30,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "6",
     "react-select": "^5.2.1",
+    "react-toastify": "^8.1.0",
     "react-use": "^17.3.1",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",

@@ -10,6 +10,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { SignupContext } from "../..";
 import { PopupContext } from "pages/_app";
+import { toast } from "react-toastify";
 
 const StepTwoContainer = styled.div`
   ${tw``}
@@ -115,7 +116,9 @@ const StepTwo: FC<IStepTwo> = () => {
         try {
           let response = await fetchUser.signup(params);
           setStepNumber?.(4);
-        } catch (error) {}
+        } catch (error: any) {
+          toast.error(error);
+        }
       }}
     >
       {(props) => {
@@ -214,7 +217,9 @@ const StepTwo: FC<IStepTwo> = () => {
               </InputBox>
 
               <ButtonContainer>
-                <Button variant="container">Tiếp tục</Button>
+                <Button type="submit" variant="container">
+                  Tiếp tục
+                </Button>
                 <Button
                   type="button"
                   onClick={handleChangeStepOne}

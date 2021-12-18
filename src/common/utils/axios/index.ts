@@ -44,10 +44,17 @@ class AxiosService {
 
     instance.interceptors.response.use(
       (response: AxiosResponse) => {
+        const { data } = response;
+
+        if (data && data.success === false) {
+          return Promise.reject(handleError(data));
+        }
+
         return response;
       },
       (error: AxiosError) => {
         if (error.message === "Request failed with status code 401") {
+          localStorage.clear();
           location.href = "/login";
         }
 
@@ -69,6 +76,13 @@ class AxiosService {
   async post(url: string, data?: IDataAxios): IResponseAxios {
     try {
       return await this.#instance.post(url, data);
+    } catch (error) {
+      throw error;
+    }
+  }
+  async patch(url: string, data?: IDataAxios): IResponseAxios {
+    try {
+      return await this.#instance.patch(url, data);
     } catch (error) {
       throw error;
     }

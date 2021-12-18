@@ -50,7 +50,7 @@ class AppDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body style={{ backgroundColor: "#f4f5f6" }}>
+        <body>
           <Main />
           <NextScript />
         </body>

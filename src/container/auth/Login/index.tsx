@@ -1,5 +1,4 @@
 import Button from "design/Button";
-import Link from "design/Link";
 
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
@@ -11,6 +10,7 @@ import Input from "../components/InputAuth";
 import Layout from "../components/Layout";
 import Verify from "components/Verify";
 import fetchUser from "services/user/auth";
+import { toast } from "react-toastify";
 
 const LoginForm = styled.form`
   ${tw`lg:mx-10 mx-20 mt-12 grid gap-4`}
@@ -28,6 +28,9 @@ const SavePass = styled.div`
 `;
 const ForgetPass = styled.div`
   ${tw``}
+`;
+const Link = styled.a`
+  ${tw`text-red-600`}
 `;
 
 const Login = () => {
@@ -50,11 +53,15 @@ const Login = () => {
     return (
       <Verify
         headerTitle="Xác nhận Thiết Bị"
-        headerContent="qua tài khoản email"
+        headerContent="qua tài khoản email "
         content={
           <>
-            Vui lòng lấy mã code từ điện thoại của bạn để xác thực đăng nhập .
-            Nếu không có mã vui lòng đăng nhập lại.
+            Vui lòng lấy mã code từ email (
+            <Link href="https://www.gmail.com" target="_blank">
+              {email}
+            </Link>
+            ) của bạn để xác thực đăng nhập . Nếu không có mã vui lòng kiểm tra
+            hộp thư mail spam.
           </>
         }
       />
@@ -77,7 +84,9 @@ const Login = () => {
             const response = await fetchUser.signin(values);
 
             handleVerify(values.email);
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error);
+          }
         }}
       >
         {(props) => {

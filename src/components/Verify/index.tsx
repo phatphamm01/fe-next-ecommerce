@@ -21,13 +21,11 @@ const top = keyframes`
 `;
 
 const VerifyContainer = styled.div`
-  ${tw`absolute grid grid-rows-[160px 1fr] bg-white rounded-lg overflow-hidden`}
+  ${tw`absolute max-w-[500px] grid grid-rows-[160px 1fr] bg-white rounded-lg overflow-hidden`}
   top:50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 500px;
   min-height: 440px;
-
   animation: ${top} 300ms linear;
 `;
 

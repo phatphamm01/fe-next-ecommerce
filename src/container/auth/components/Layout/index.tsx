@@ -33,6 +33,7 @@ const Layout: FC = ({ children }) => {
   useEffect(() => {
     const checkToken = localStorage.getItem("token");
     if (checkToken) {
+      debugger;
       router.push("/user");
     }
   }, []);

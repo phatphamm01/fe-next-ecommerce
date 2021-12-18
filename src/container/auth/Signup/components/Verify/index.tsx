@@ -3,6 +3,7 @@ import Button from "design/Button";
 import Select from "design/Select";
 import { Formik } from "formik";
 import { useAppDispatch, useAppSelector } from "hook/redux";
+import { useRouter } from "next/router";
 import { FC, useContext, useEffect, useState } from "react";
 import { getDistrict, getProvice, getWard } from "redux/slices/location";
 import styled from "styled-components";
@@ -33,6 +34,7 @@ export interface IDataStepTwo {
 }
 
 const StepTwo: FC<IStepTwo> = () => {
+  const router = useRouter();
   const { data, setData, setStepNumber } = useContext(SignupContext);
 
   return (
@@ -54,6 +56,15 @@ const StepTwo: FC<IStepTwo> = () => {
           variant="text"
         >
           Quay lại
+        </Button>
+        <Button
+          type="button"
+          onClick={() => {
+            router.push("/login");
+          }}
+          variant="container"
+        >
+          Đăng nhập
         </Button>
       </Form>
     </StepTwoContainer>

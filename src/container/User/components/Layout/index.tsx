@@ -28,18 +28,16 @@ const Layout: FC<ILayout> = ({ children }) => {
 
   useEffect(() => {}, [isActive]);
 
-  const handleNav = () => {
-    if (!isActive) {
-      setIsActive(true);
-    }
+  const handleNavOpen = () => {
+    setIsActive(!isActive);
   };
 
   return (
     <LayoutContainer>
-      <Header isActive={isActive} handleNav={handleNav} />
+      <Header isActive={isActive} handleNav={handleNavOpen} />
 
       <NavBox ref={ref}>
-        <Navbar isActive={isActive} />
+        <Navbar handleNav={handleNavOpen} isActive={isActive} />
       </NavBox>
 
       <Main isActive={isActive}>{children}</Main>

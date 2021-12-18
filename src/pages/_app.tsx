@@ -8,24 +8,27 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import tw from "twin.macro";
 import styled, { css } from "styled-components";
 import useToggleAndCloseVer2 from "hook/useToggleAndCloseVer2";
+import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "common/styles/GlobalStyles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "tailwindcss/tailwind.css";
 import "common/styles/styles.scss";
+import "moment/locale/vi";
 
 const Wrapper = styled.div<{ isPopup: boolean }>`
   ${tw``}
   ${({ isPopup }) =>
     isPopup &&
     css`
-      filter: blur(5px);
+      filter: blur(3px);
     `}
 `;
 
 const PopupWrapper = styled.div`
-  ${tw`fixed z-[9999]`}
+  ${tw`fixed z-[1]`}
   width: 100vw;
   height: 100vh;
   background-color: #00000022;
@@ -38,6 +41,7 @@ const PopupBox = styled.div`
 interface IPopupContext {
   setHtml?: (dom: ReactChild) => void;
   closePopup?: () => void;
+  isClose?: boolean;
 }
 
 export const PopupContext = createContext<IPopupContext>({});
@@ -48,14 +52,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const ref = useRef<HTMLDivElement>(null);
   const [isPopup, setIsPopup] = useToggleAndCloseVer2(ref);
+  const [isClose, setIsClose] = useState<boolean>(false);
 
   const handleSetHtml = (dom: ReactChild) => {
     setHtml(dom);
   };
 
   const closeHtml = () => {
-    setIsPopup(false);
-    setHtml(null);
+    setIsClose(true);
+
+    setTimeout(() => {
+      setIsClose(false);
+      setIsPopup(false);
+      setHtml(null);
+    }, 400);
   };
 
   useEffect(() => {
@@ -72,33 +82,39 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <PopupContext.Provider
-      value={{ setHtml: handleSetHtml, closePopup: closeHtml }}
+      value={{
+        setHtml: handleSetHtml,
+        closePopup: closeHtml,
+        isClose: isClose,
+      }}
     >
       {isPopup && (
         <PopupWrapper ref={ref}>
           <PopupBox>{html}</PopupBox>
         </PopupWrapper>
       )}
-      <Wrapper isPopup={isPopup}>
-        {process.browser ? (
-          <div id="root">
+      {process.browser ? (
+        <div id="root">
+          <ToastContainer style={{ zIndex: 99999 }} />
+          <Wrapper isPopup={isPopup}>
             <PersistGate
               persistor={store?.__persistor}
               loading={<div>Loading</div>}
             >
               <GlobalStyles />
+
               <Component {...pageProps} />
             </PersistGate>
-          </div>
-        ) : (
-          <div id="root">
-            <PersistGate persistor={store as any}>
-              <GlobalStyles />
-              <Component {...pageProps} />
-            </PersistGate>
-          </div>
-        )}
-      </Wrapper>
+          </Wrapper>
+        </div>
+      ) : (
+        <div id="root">
+          <PersistGate persistor={store as any}>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </PersistGate>
+        </div>
+      )}
     </PopupContext.Provider>
   );
 }
