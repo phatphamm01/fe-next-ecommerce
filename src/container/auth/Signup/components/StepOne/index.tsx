@@ -131,11 +131,9 @@ const StepOne: FC<IStepOne> = () => {
                 <Button type="submit" variant="container">
                   Đăng kí
                 </Button>
-                <Link href="/login">
-                  <Button type="button" variant="text">
-                    Bạn đã có tài khoản? Đăng nhập
-                  </Button>
-                </Link>
+                <Button type="button" variant="text">
+                  <Link href="/login">Bạn đã có tài khoản? Đăng nhập</Link>
+                </Button>
               </ButtonContainer>
             </Form>
           </StepOneContainer>

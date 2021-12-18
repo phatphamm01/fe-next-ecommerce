@@ -27,6 +27,12 @@ const Value = styled.div`
 const Summon = styled.div`
   ${tw`font-semibold text-xl text-red-500`}
 `;
+const THead = styled.thead`
+  ${tw``}
+`;
+const TBody = styled.tbody`
+  ${tw``}
+`;
 
 interface ITable extends Record<string, any> {
   depositinpassbook?: number;
@@ -61,42 +67,44 @@ const Table: FC<ITable> = ({
             </Box>
           </TD>
         </TR> */}
-        <TR>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(depositinpassbook!)}</Value>
-              <Title>Số tiền mỗi TK</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(deposits!)}</Value>
-              <Title>Tổng tiền gửi</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(profitinpassbook!)}</Value>
-              <Title>Tiền lãi mỗi TK</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(profit!)}</Value>
-              <Title>Tổng tiền lãi</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD colSpan={2}>
-            <Box>
-              <Value>{numberToMoneyVer2(totalProfit!)}</Value>
-              <Title>Số dư tại ngày đến hạn</Title>
-            </Box>
-          </TD>
-        </TR>
+        <TBody>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(depositinpassbook!)}</Value>
+                <Title>Số tiền mỗi TK</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(deposits!)}</Value>
+                <Title>Tổng tiền gửi</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(profitinpassbook!)}</Value>
+                <Title>Tiền lãi mỗi TK</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(profit!)}</Value>
+                <Title>Tổng tiền lãi</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD colSpan={2}>
+              <Box>
+                <Value>{numberToMoneyVer2(totalProfit!)}</Value>
+                <Title>Số dư tại ngày đến hạn</Title>
+              </Box>
+            </TD>
+          </TR>
+        </TBody>
       </TabelBox>
     </TableContainer>
   );

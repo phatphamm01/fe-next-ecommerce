@@ -23,7 +23,9 @@ const Title = styled.div`
 const Value = styled.div`
   ${tw`text-lg text-red-500 font-semibold mb-1`}
 `;
-
+const TBody = styled.tbody`
+  ${tw``}
+`;
 interface ITable {
   annualInterest: {
     title: string;
@@ -57,42 +59,44 @@ const Table: FC<ITable> = ({
   return (
     <TableContainer>
       <TabelBox>
-        <TR>
-          <TD>
-            <Box>
-              <Value>{annualInterest.value}</Value>
-              <Title>{annualInterest.title}</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{totalProfit.value}</Value>
-              <Title>{totalProfit.title}</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD>
-            <Box>
-              <Value>{openDate.value}</Value>
-              <Title>{openDate.title}</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{endDate.value}</Value>
-              <Title>{endDate.title}</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD colSpan={2}>
-            <Box>
-              <Value>{result.value}</Value>
-              <Title>{result.title}</Title>
-            </Box>
-          </TD>
-        </TR>
+        <TBody>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{annualInterest.value}</Value>
+                <Title>{annualInterest.title}</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{totalProfit.value}</Value>
+                <Title>{totalProfit.title}</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{openDate.value}</Value>
+                <Title>{openDate.title}</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{endDate.value}</Value>
+                <Title>{endDate.title}</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD colSpan={2}>
+              <Box>
+                <Value>{result.value}</Value>
+                <Title>{result.title}</Title>
+              </Box>
+            </TD>
+          </TR>
+        </TBody>
       </TabelBox>
     </TableContainer>
   );

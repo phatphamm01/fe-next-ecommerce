@@ -133,11 +133,9 @@ const Login = () => {
                 <Button type="submit" variant="container">
                   Đăng nhập
                 </Button>
-                <Link href="/signup">
-                  <Button type="button" variant="text">
-                    Đăng kí
-                  </Button>
-                </Link>
+                <Button type="button" variant="text">
+                  <Link href="/signup">Đăng kí</Link>
+                </Button>
               </ButtonContainer>
             </LoginForm>
           );

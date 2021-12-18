@@ -109,9 +109,9 @@ const Item: FC<IItem> = ({ data }) => {
         </Button>
 
         {!data.status && (
-          <Link href={"/user/pass-book/" + data._id}>
-            <Button variant="container">Rút tiền</Button>
-          </Link>
+          <Button variant="container">
+            <Link href={"/user/pass-book/" + data._id}>Rút tiền</Link>
+          </Button>
         )}
       </ItemControl>
     </ItemContainer>

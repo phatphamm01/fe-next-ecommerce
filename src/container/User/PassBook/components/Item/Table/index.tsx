@@ -29,6 +29,9 @@ const Summon = styled.div`
   ${tw`font-semibold text-xl text-red-500`}
 `;
 
+const TBody = styled.tbody`
+  ${tw``}
+`;
 interface ITable {
   data: any;
 }
@@ -37,50 +40,52 @@ const Table: FC<ITable> = ({ data }) => {
   return (
     <TableContainer>
       <TabelBox>
-        <TR>
-          <TD colSpan={2}>
-            <Box>
-              <Value>{data.passbook.option} Tháng</Value>
-              <Title>Thời hạn</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(data.passbook.deposits!)}</Value>
-              <Title>Tiền gửi</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{numberToMoneyVer2(data.profit!)}</Value>
-              <Title>Tiền lãi</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD>
-            <Box>
-              <Value>{moment(data.passbook.createAt).format("lll")}</Value>
-              <Title>Ngày gửi</Title>
-            </Box>
-          </TD>
-          <TD>
-            <Box>
-              <Value>{moment(data.passbook.endAt).format("lll")}</Value>
-              <Title>Ngày rút</Title>
-            </Box>
-          </TD>
-        </TR>
-        <TR>
-          <TD colSpan={2}>
-            <Box>
-              <Value>{numberToMoneyVer2(data.totalmoney!)}</Value>
-              <Title>Số dư tại ngày đến hạn</Title>
-            </Box>
-          </TD>
-        </TR>
+        <TBody>
+          <TR>
+            <TD colSpan={2}>
+              <Box>
+                <Value>{data.passbook.option} Tháng</Value>
+                <Title>Thời hạn</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(data.passbook.deposits!)}</Value>
+                <Title>Tiền gửi</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{numberToMoneyVer2(data.profit!)}</Value>
+                <Title>Tiền lãi</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD>
+              <Box>
+                <Value>{moment(data.passbook.createAt).format("lll")}</Value>
+                <Title>Ngày gửi</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{moment(data.passbook.endAt).format("lll")}</Value>
+                <Title>Ngày rút</Title>
+              </Box>
+            </TD>
+          </TR>
+          <TR>
+            <TD colSpan={2}>
+              <Box>
+                <Value>{numberToMoneyVer2(data.totalmoney!)}</Value>
+                <Title>Số dư tại ngày đến hạn</Title>
+              </Box>
+            </TD>
+          </TR>
+        </TBody>
       </TabelBox>
     </TableContainer>
   );

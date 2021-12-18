@@ -22,7 +22,7 @@ const TextNav = styled.li`
   ${tw``}
 `;
 const AuthContainr = styled.div`
-  ${tw`flex gap-6`}
+  ${tw`flex gap-6 w-[300px]`}
 `;
 const MobileNav = styled.div`
   ${tw``}
@@ -83,18 +83,14 @@ const Header = () => {
           <TextMobileNav>Công cụ tính lãi</TextMobileNav>
         </NavMobileContainer>
         <AuthMobileContainer>
-          <LinkNext href="/login">
-            <Button
-              style={{ background: "white", border: "none", color: "black" }}
-            >
-              Đăng nhập
-            </Button>
-          </LinkNext>
-          <LinkNext href="/login">
-            <Button style={{ border: "1px solid white" }} variant="container">
-              Mở tài khoản
-            </Button>
-          </LinkNext>
+          <Button
+            style={{ background: "white", border: "none", color: "black" }}
+          >
+            <LinkNext href="/login">Đăng nhập</LinkNext>
+          </Button>
+          <Button style={{ border: "1px solid white" }} variant="container">
+            <LinkNext href="/login">Mở tài khoản</LinkNext>
+          </Button>
         </AuthMobileContainer>
       </MobileContainer>
       {isActive && <Shadow onClick={handleActive} />}
@@ -120,12 +116,12 @@ const Header = () => {
           </NavContainer>
 
           <AuthContainr>
-            <LinkNext href="/login">
-              <Button variant="outlined">Đăng nhập</Button>
-            </LinkNext>
-            <LinkNext href="/signup">
-              <Button variant="container">Mở tài khoản</Button>
-            </LinkNext>
+            <Button variant="outlined">
+              <LinkNext href="/login">Đăng nhập</LinkNext>
+            </Button>
+            <Button style={{ flexGrow: 1 }} variant="container">
+              <LinkNext href="/signup">Mở tài khoản</LinkNext>
+            </Button>
           </AuthContainr>
         </NavMain>
       </HeaderContainer>

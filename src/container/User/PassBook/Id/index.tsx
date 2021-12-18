@@ -114,9 +114,9 @@ const PassBook: FC<IPassBook> = () => {
           </MessageBox>
           <Control>
             <ButtonBox>
-              <Link href={"/user/pass-book"}>
-                <Button variant="outlined">Quay lại</Button>
-              </Link>
+              <Button variant="outlined">
+                <Link href={"/user/pass-book"}>Quay lại</Link>
+              </Button>
             </ButtonBox>
             <ButtonBox>
               <Button

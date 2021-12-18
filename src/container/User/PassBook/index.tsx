@@ -105,7 +105,7 @@ const PassBook: FC<IPassBook> = () => {
           ) : passbookList.length > 0 ? (
             <List>
               {passbookList.map((value) => (
-                <Item data={value} />
+                <Item key={value._id} data={value} />
               ))}
             </List>
           ) : (

@@ -25,7 +25,6 @@ const Link: FC<ILink> = (props) => {
   return (
     <a
       {...props}
-      style={{ display: "contents" }}
       onClick={(e) => handleLoading(e)}
       href={href.toString() || "/notfound"}
     >
