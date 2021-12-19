@@ -2,9 +2,9 @@ import { FC, useContext } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { PopupContext } from "pages/_app";
-import Box from "design/Box";
-import Recharge from "container/User/components/Recharge";
+import { PopupContext } from "@pages/_app";
+import Box from "@design/Box";
+import Recharge from "@container/User/components/Recharge";
 
 const NavbarContainer = styled.div`
   ${tw``}

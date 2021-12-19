@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import ATMLayout from "./components/Layout";
 import router from "next/dist/client/router";
-import useLeave from "hook/useLeave";
+import useLeave from "@hook/useLeave";
 
 const ATMContainer = styled.div`
   ${tw`min-h-[100vh] min-w-[100vw] flex justify-center items-center`}

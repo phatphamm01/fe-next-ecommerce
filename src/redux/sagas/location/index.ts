@@ -1,5 +1,5 @@
 import { all, takeLatest } from "redux-saga/effects";
-import { getDistrict, getProvice, getWard } from "redux/slices/location";
+import { getDistrict, getProvice, getWard } from "@redux/slices/location";
 import { getDistrictSaga } from "./district";
 import { getProviceSaga } from "./provice";
 import { getWardSaga } from "./ward";

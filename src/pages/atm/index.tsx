@@ -1,5 +1,5 @@
-import ATM from "container/ATM";
-import Meta from "design/Meta";
+import ATM from "@container/ATM";
+import Meta from "@design/Meta";
 import type { NextPage } from "next";
 import { Fragment } from "react";
 

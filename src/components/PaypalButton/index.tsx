@@ -7,7 +7,7 @@ import { FC, useRef } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { toast } from "react-toastify";
-import fetchPaypal from "services/paypal";
+import fetchPaypal from "@services/paypal";
 
 const PaypalContainer = styled.div`
   ${tw`z-0`}

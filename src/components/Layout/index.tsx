@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import DetectingInactiveUsers from "common/utils/detectingInactiveUsers";
+import DetectingInactiveUsers from "@common/utils/detectingInactiveUsers";
 
 interface IMain {
   children: ReactNode;

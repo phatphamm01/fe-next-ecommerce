@@ -1,11 +1,11 @@
-import Input from "container/Auth/components/InputAuth";
-import Button from "design/Button";
-import Select from "design/Select";
+import Input from "@container/Auth/components/InputAuth";
+import Button from "@design/Button";
+import Select from "@design/Select";
 import { Formik } from "formik";
-import { useAppDispatch, useAppSelector } from "hook/redux";
+import { useAppDispatch, useAppSelector } from "@hook/redux";
 import { useRouter } from "next/router";
 import { FC, useContext, useEffect, useState } from "react";
-import { getDistrict, getProvice, getWard } from "redux/slices/location";
+import { getDistrict, getProvice, getWard } from "@redux/slices/location";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { SignupContext } from "../..";

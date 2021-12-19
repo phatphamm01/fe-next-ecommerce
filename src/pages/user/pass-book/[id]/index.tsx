@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { NextPage } from "next";
 
-import PassBook from "container/User/PassBook/Id";
+import PassBook from "@container/User/PassBook/Id";
 
-import Meta from "design/Meta";
+import Meta from "@design/Meta";
 
 const UserPage: NextPage = () => {
   return (

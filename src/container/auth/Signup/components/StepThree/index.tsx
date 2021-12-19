@@ -1,15 +1,15 @@
-import checkNullObject from "common/function/checkNullObject";
-import Button from "design/Button";
-import Select from "design/Select";
+import checkNullObject from "@common/function/checkNullObject";
+import Button from "@design/Button";
+import Select from "@design/Select";
 import { Formik } from "formik";
-import { useAppDispatch, useAppSelector } from "hook/redux";
+import { useAppDispatch, useAppSelector } from "@hook/redux";
 import { FC, useContext, useEffect, useState } from "react";
-import { getDistrict, getProvice, getWard } from "redux/slices/location";
-import fetchUser from "services/user/auth";
+import { getDistrict, getProvice, getWard } from "@redux/slices/location";
+import fetchUser from "@services/user/auth";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { SignupContext } from "../..";
-import { PopupContext } from "pages/_app";
+import { PopupContext } from "@pages/_app";
 import { toast } from "react-toastify";
 
 const StepTwoContainer = styled.div`

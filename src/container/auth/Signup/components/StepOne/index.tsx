@@ -1,6 +1,6 @@
-import Input from "container/Auth/components/InputAuth";
-import Button from "design/Button";
-import Link from "design/Link";
+import Input from "@container/Auth/components/InputAuth";
+import Button from "@design/Button";
+import Link from "@design/Link";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
 import { FC, useState, useContext } from "react";

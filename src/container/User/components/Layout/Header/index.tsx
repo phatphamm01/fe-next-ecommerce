@@ -3,8 +3,8 @@ import tw from "twin.macro";
 import styled, { css } from "styled-components";
 import { TextalignRight } from "iconsax-react";
 import { useRouter } from "next/router";
-import Link from "design/Link";
-import { navLinkData } from "common/constants/navLinkData";
+import Link from "@design/Link";
+import { navLinkData } from "@common/constants/navLinkData";
 
 const HeaderContainer = styled.div`
   ${tw`relative bg-red-700`}

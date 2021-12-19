@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
-import { IDataResponse } from "common/types/IAxiosResponse";
-import fetchDistrict from "services/location/district";
-import { getDistrictSuccess } from "redux/slices/location";
+import { IDataResponse } from "@common/types/IAxiosResponse";
+import fetchDistrict from "@services/location/district";
+import { getDistrictSuccess } from "@redux/slices/location";
 
 export function* getDistrictSaga(action: any) {
   const { payload } = action;

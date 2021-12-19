@@ -1,7 +1,7 @@
 import { FC } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { numberToMoneyVer2 } from "common/function/convertStringToMoney";
+import { numberToMoneyVer2 } from "@common/function/convertStringToMoney";
 import moment from "moment";
 
 const TableContainer = styled.div`

@@ -1,6 +1,6 @@
-import Button from "design/Button";
-import LinkNext, { ILinkNext } from "design/Link";
-import Logo from "design/Logo";
+import Button from "@design/Button";
+import LinkNext, { ILinkNext } from "@design/Link";
+import Logo from "@design/Logo";
 import { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";

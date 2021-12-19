@@ -5,7 +5,7 @@ import {
   IProvice,
   ILocationPayload,
   IWard,
-} from "redux/types/location";
+} from "@redux/types/location";
 
 interface ILocationSlice {
   provice: IProvice;

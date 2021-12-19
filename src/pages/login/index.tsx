@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { NextPage } from "next";
 
-import Login from "container/Auth/Login";
+import Login from "@container/Auth/Login";
 
-import Meta from "design/Meta";
+import Meta from "@design/Meta";
 
 const LoginPage: NextPage = () => {
   return (

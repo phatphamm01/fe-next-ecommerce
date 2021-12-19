@@ -1,4 +1,4 @@
-import Logo from "design/Logo";
+import Logo from "@design/Logo";
 import { FC, useEffect } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";

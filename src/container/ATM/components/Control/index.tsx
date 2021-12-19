@@ -1,8 +1,8 @@
 import { FC } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import Power from "assets/svg/power.svg";
-import Logo from "design/Logo";
+import Power from "@assets/svg/power.svg";
+import Logo from "@design/Logo";
 
 const ATMControl = styled.div<{ active?: boolean }>`
   ${tw`relative w-[97.4%] h-[95%] rounded-[25px] border-red-300 border mb-10 flex items-center justify-center`}

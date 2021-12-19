@@ -1,5 +1,5 @@
-import Input from "container/Auth/components/InputAuth";
-import Button from "design/Button";
+import Input from "@container/Auth/components/InputAuth";
+import Button from "@design/Button";
 import { Formik } from "formik";
 import { FC, useContext } from "react";
 import styled from "styled-components";

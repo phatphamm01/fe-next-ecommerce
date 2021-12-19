@@ -1,5 +1,5 @@
-import Home from "container/Home";
-import Meta from "design/Meta";
+import Home from "@container/Home";
+import Meta from "@design/Meta";
 import type { NextPage } from "next";
 import { Fragment } from "react";
 

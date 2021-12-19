@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled, { css } from "styled-components";
 import Header from "./Header";
 import Navbar from "./Navbar";
-import useToggleAndCloseVer2 from "hook/useToggleAndCloseVer2";
+import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
 
 const LayoutContainer = styled.div`
   ${tw``}

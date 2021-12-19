@@ -1,12 +1,12 @@
 import { FC, useContext, useState, useEffect } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import Button from "design/Button";
-import InputUser from "design/InputUser";
+import Button from "@design/Button";
+import InputUser from "@design/InputUser";
 import Table from "./Table";
 import Skeleton from "react-loading-skeleton";
 import { CreatePassBookContext } from "..";
-import fetchCart from "services/cart";
+import fetchCart from "@services/cart";
 import { toast } from "react-toastify";
 import { PopupContext } from "../../../../../../pages/_app";
 

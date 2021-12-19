@@ -1,4 +1,4 @@
-import AxiosService from "common/utils/axios";
+import AxiosService from "@common/utils/axios";
 
 const url = {
   get: (payload: any) => `location/wards/${payload}`,

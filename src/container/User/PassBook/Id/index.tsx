@@ -2,15 +2,15 @@ import { FC, useContext, useEffect, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 
-import Button from "design/Button";
+import Button from "@design/Button";
 
-import { PopupContext } from "pages/_app";
-import fetchPassbook from "services/passbook";
-import Layout from "container/User/components/Layout";
+import { PopupContext } from "@pages/_app";
+import fetchPassbook from "@services/passbook";
+import Layout from "@container/User/components/Layout";
 import Table from "./components/Table";
 import { useRouter } from "next/router";
-import Link from "design/Link";
-import IconLoading from "design/IconLoading";
+import Link from "@design/Link";
+import IconLoading from "@design/IconLoading";
 import { toast } from "react-toastify";
 
 const PassBookContainer = styled.div`

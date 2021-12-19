@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
-import { IDataResponse } from "common/types/IAxiosResponse";
-import fetchWard from "services/location/ward";
-import { getWardSuccess } from "redux/slices/location";
+import { IDataResponse } from "@common/types/IAxiosResponse";
+import fetchWard from "@services/location/ward";
+import { getWardSuccess } from "@redux/slices/location";
 
 export function* getWardSaga(action: any) {
   const { payload } = action;
