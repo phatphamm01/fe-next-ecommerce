@@ -8,7 +8,7 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
-import Input from "../components/Input";
+import Input from "../../../design/InputAuth";
 import Layout from "../components/Layout";
 
 

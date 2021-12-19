@@ -15,9 +15,6 @@ import styled, { css } from "styled-components";
 import "tailwindcss/tailwind.css";
 import tw from "twin.macro";
 
-
-
-
 const Wrapper = styled.div<{ isPopup: boolean }>`
   ${tw``}
   ${({ isPopup }) =>

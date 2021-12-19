@@ -1,4 +1,4 @@
-import Input from "@container/Auth/components/Input";
+import Input from "@design/InputAuth";
 import Button from "@design/Button";
 import { Formik } from "formik";
 import { FC, useContext } from "react";
