@@ -103,7 +103,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     let numberClear: any = numb ? numb.join("") : "";
     numberClear = Number(numberClear);
 
-    let totalProfit = (Number(numberClear) * profit) / 100 / month;
+    let totalProfit = (Number(numberClear) * profit) / 100 / 12;
     let result = Number(numberClear) + totalProfit;
 
     const dataTable = {
