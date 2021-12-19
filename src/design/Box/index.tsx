@@ -1,6 +1,6 @@
 import { CSSProperties, FC, ReactChild, useContext } from "react";
-import tw from "twin.macro";
 import styled, { css, keyframes } from "styled-components";
+import tw from "twin.macro";
 import { PopupContext } from "../../pages/_app";
 
 const top = keyframes`

@@ -1,4 +1,4 @@
-import { ReactChild, RefObject, useRef } from "react";
+import { ReactChild, useRef } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 

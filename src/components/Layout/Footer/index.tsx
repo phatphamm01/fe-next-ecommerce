@@ -1,5 +1,5 @@
-import tw from "twin.macro";
 import styled from "styled-components";
+import tw from "twin.macro";
 
 const FooterContaienr = styled.footer`
   ${tw`bg-gray-900 min-h-[100px]`}

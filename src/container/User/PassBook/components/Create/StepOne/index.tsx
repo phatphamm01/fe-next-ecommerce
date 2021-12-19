@@ -1,22 +1,19 @@
-import { FC, useContext, useEffect, useState } from "react";
-import tw from "twin.macro";
-import styled from "styled-components";
-import Button from "@design/Button";
-import InputUser from "@design/InputUser";
-
-import { CreatePassBookContext } from "..";
-import Table from "./Table";
-import fetchOptions from "@services/option";
-import moment from "moment";
-
-import Skeleton from "react-loading-skeleton";
 import checkNullObject from "@common/function/checkNullObject";
 import convertStringToMoney, {
-  numberToMoneyVer2,
+  numberToMoneyVer2
 } from "@common/function/convertStringToMoney";
+import Button from "@design/Button";
+import InputUser from "@design/InputUser";
 import fetchCart from "@services/cart";
+import fetchOptions from "@services/option";
+import moment from "moment";
+import { FC, useContext, useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { toast } from "react-toastify";
-import IconLoading from "@design/IconLoading";
+import styled from "styled-components";
+import tw from "twin.macro";
+import { CreatePassBookContext } from "..";
+import Table from "./Table";
 
 const StepOneContainer = styled.div`
   ${tw``}

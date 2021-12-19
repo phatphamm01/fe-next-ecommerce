@@ -1,15 +1,12 @@
 import {
   Dispatch,
-  FC,
-  MutableRefObject,
-  SetStateAction,
+  FC, SetStateAction,
   useEffect,
-  useRef,
-  useState,
+  useRef
 } from "react";
+import ReactSelect, { GetOptionLabel, StylesConfig } from "react-select";
 import styled from "styled-components";
 import tw from "twin.macro";
-import ReactSelect, { GetOptionLabel, StylesConfig } from "react-select";
 
 const SelectContainer = styled.div`
   ${tw`text-lg bg-white w-full`}

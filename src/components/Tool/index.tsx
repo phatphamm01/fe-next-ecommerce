@@ -1,6 +1,6 @@
 import Button from "@design/Button";
 import Title from "@design/Title";
-import { memo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Input from "./components/Input";

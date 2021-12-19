@@ -1,1 +1,1 @@
-declare module 'bignumber';
+declare module "bignumber";

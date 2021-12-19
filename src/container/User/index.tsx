@@ -1,12 +1,11 @@
-import { FC } from "react";
-import tw from "twin.macro";
-import styled from "styled-components";
-import Layout from "./components/Layout";
-import fetchUser from "@services/user/auth";
-import { useEffect, useState } from "react";
 import checkNullObject from "@common/function/checkNullObject";
-import Skeleton from "react-loading-skeleton";
 import { numberToMoneyVer2 } from "@common/function/convertStringToMoney";
+import fetchUser from "@services/user/auth";
+import { FC, useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import styled from "styled-components";
+import tw from "twin.macro";
+import Layout from "./components/Layout";
 
 const UserContainer = styled.div`
   ${tw``}

@@ -1,12 +1,10 @@
-import Input from "@container/Auth/components/Input";
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import Calendar from "react-calendar";
-import tw from "twin.macro";
-import "react-calendar/dist/Calendar.css";
-import { Calendar2 } from "iconsax-react";
-
-import styled from "styled-components";
 import useToggleAndClose from "@hook/useToggleAndClose";
+import { Calendar2 } from "iconsax-react";
+import React, { useEffect, useRef, useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import styled from "styled-components";
+import tw from "twin.macro";
 
 const InputContainer = tw.div`text-gray-600`;
 const Label = tw.label``;

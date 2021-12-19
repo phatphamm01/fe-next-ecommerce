@@ -1,17 +1,14 @@
-import Verify from "./components/Verify";
 import {
-  useEffect,
-  useState,
   createContext,
   Dispatch,
-  SetStateAction,
+  SetStateAction, useState
 } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Layout from "../components/Layout";
-import StepOne, { IDataStepOne } from "./components/StepOne";
-import StepThree from "./components/StepThree";
-import StepTwo from "./components/StepTwo";
+import StepOne from "./StepOne";
+import { default as StepThree, default as StepTwo } from "./StepThree";
+import Verify from "./Verify";
 
 const SignupForm = styled.div`
   ${tw`mx-20 2xl:mx-10 lg:mx-10 sm:mx-10 mt-12 grid gap-4`}

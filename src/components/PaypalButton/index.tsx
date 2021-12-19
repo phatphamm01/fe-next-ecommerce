@@ -1,13 +1,13 @@
 import {
   PayPalButtons,
   PayPalButtonsComponentProps,
-  PayPalScriptProvider,
+  PayPalScriptProvider
 } from "@paypal/react-paypal-js";
-import { FC, useRef } from "react";
+import fetchPaypal from "@services/paypal";
+import { FC } from "react";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { toast } from "react-toastify";
-import fetchPaypal from "@services/paypal";
 
 const PaypalContainer = styled.div`
   ${tw`z-0`}

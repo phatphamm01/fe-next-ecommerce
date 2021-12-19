@@ -1,10 +1,10 @@
-import { FC, useContext } from "react";
-import tw from "twin.macro";
-import styled from "styled-components";
-import { useRouter } from "next/router";
-import { PopupContext } from "@pages/_app";
-import Box from "@design/Box";
 import Recharge from "@container/User/components/Recharge";
+import Box from "@design/Box";
+import { PopupContext } from "@pages/_app";
+import { useRouter } from "next/router";
+import { FC, useContext } from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
 
 const NavbarContainer = styled.div`
   ${tw``}

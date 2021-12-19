@@ -1,6 +1,6 @@
-import { FC, ReactChild, ReactNode } from "react";
-import tw from "twin.macro";
+import { FC } from "react";
 import styled from "styled-components";
+import tw from "twin.macro";
 import Control, { IControl } from "../Control";
 import View from "../View";
 

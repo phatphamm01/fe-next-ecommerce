@@ -1,1 +1,1 @@
-declare module '@videsk/tailwind-random-color';
+declare module "@videsk/tailwind-random-color";

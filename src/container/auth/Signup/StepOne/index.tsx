@@ -1,12 +1,12 @@
-import Input from "src/container/Auth/components/Input";
 import Button from "@design/Button";
 import Link from "@design/Link";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
-import { FC, useState, useContext } from "react";
+import { FC, useContext, useState } from "react";
+import Input from "src/container/Auth/components/Input";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { SignupContext } from "../../index";
+import { SignupContext } from "..";
 
 const StepOneContainer = styled.div`
   ${tw``}

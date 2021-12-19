@@ -1,9 +1,8 @@
-import { FC, useEffect, useState } from "react";
-import tw from "twin.macro";
-import styled from "styled-components";
-import ATMLayout from "./components/Layout";
-import router from "next/dist/client/router";
 import useLeave from "@hook/useLeave";
+import { FC, useState } from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
+import ATMLayout from "./components/Layout";
 
 const ATMContainer = styled.div`
   ${tw`min-h-[100vh] min-w-[100vw] flex justify-center items-center`}

@@ -1,9 +1,9 @@
-import { FC, useState, useRef, useEffect } from "react";
-import tw from "twin.macro";
+import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
+import { FC, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
+import tw from "twin.macro";
 import Header from "./Header";
 import Navbar from "./Navbar";
-import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
 
 const LayoutContainer = styled.div`
   ${tw``}

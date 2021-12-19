@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import Head from "next/head";
+import { Fragment } from "react";
 
 interface ITitle {
   title: string;
@@ -8,7 +8,7 @@ interface ITitle {
 
 const TitlePage = ({
   title,
-  description = 'Dịch vụ gửi tiền tiết kiệm',
+  description = "Dịch vụ gửi tiền tiết kiệm",
 }: ITitle) => {
   return (
     <Fragment>

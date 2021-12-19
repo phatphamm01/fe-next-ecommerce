@@ -1,10 +1,10 @@
 import Button from "@design/Button";
 import LinkNext, { ILinkNext } from "@design/Link";
 import Logo from "@design/Logo";
+import { TextalignRight } from "iconsax-react";
 import { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { TextalignRight } from "iconsax-react";
 
 const HeaderContainer = styled.div`
   ${tw`container mx-auto lg:max-w-full lg:mx-4  flex justify-between items-center pt-3`}

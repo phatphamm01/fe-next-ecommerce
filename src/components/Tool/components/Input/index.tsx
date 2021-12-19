@@ -1,6 +1,6 @@
 import { CSSProperties, ReactChild, RefObject, useRef } from "react";
-import tw from "twin.macro";
 import styled from "styled-components";
+import tw from "twin.macro";
 
 const InputContainer = styled.div`
   ${tw`text-gray-600`}

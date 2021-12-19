@@ -1,12 +1,12 @@
-import { FC, useState, useEffect, useContext } from "react";
-import tw from "twin.macro";
-import styled from "styled-components";
-import Button from "@design/Button";
-import InputUser from "@design/InputUser";
-import fetchPaypal from "@services/paypal";
 import convertStringToMoney from "@common/function/convertStringToMoney";
 import PaypalButton from "@components/PaypalButton";
+import Button from "@design/Button";
+import InputUser from "@design/InputUser";
 import { PopupContext } from "@pages/_app";
+import fetchPaypal from "@services/paypal";
+import { FC, useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
 
 const RechargeContainer = styled.div`
   ${tw`pb-10`}

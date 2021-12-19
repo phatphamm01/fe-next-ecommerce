@@ -1,5 +1,3 @@
-import { AxiosError } from "axios";
-
 const handleError = (err: any) => {
   let message =
     typeof err.response !== "undefined"

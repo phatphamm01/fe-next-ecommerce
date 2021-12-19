@@ -1,7 +1,6 @@
-import { IDataAxios, IResponseAxios } from "./interface";
-
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import handleError from "./handleError";
+import { IDataAxios, IResponseAxios } from "./interface";
 
 export type Method =
   | "get"

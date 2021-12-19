@@ -1,10 +1,10 @@
-import { Dispatch, FC, SetStateAction, useEffect } from "react";
-import tw from "twin.macro";
-import styled, { css } from "styled-components";
+import { navLinkData } from "@common/constants/navLinkData";
+import Link from "@design/Link";
 import { TextalignRight } from "iconsax-react";
 import { useRouter } from "next/router";
-import Link from "@design/Link";
-import { navLinkData } from "@common/constants/navLinkData";
+import { FC } from "react";
+import styled, { css } from "styled-components";
+import tw from "twin.macro";
 
 const HeaderContainer = styled.div`
   ${tw`relative bg-red-700`}

@@ -1,6 +1,6 @@
-import { FC, MouseEvent, ReactNode } from "react";
 import { LinkProps } from "next/link";
 import { useRouter } from "next/router";
+import { FC, MouseEvent, ReactNode } from "react";
 
 interface ILink extends LinkProps {}
 export interface ILinkNext {

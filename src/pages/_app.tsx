@@ -1,22 +1,22 @@
-import { createContext, ReactChild, useState, useRef, useEffect } from "react";
-import type { AppProps } from "next/app";
-
-import { useStore } from "react-redux";
-import { wrapper } from "@redux/store";
-import { PersistGate } from "redux-persist/lib/integration/react";
-
-import tw from "twin.macro";
-import styled, { css } from "styled-components";
-import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
-import { ToastContainer } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "@common/styles/GlobalStyles";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "react-loading-skeleton/dist/skeleton.css";
-import "tailwindcss/tailwind.css";
 import "@common/styles/styles.scss";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
+import { wrapper } from "@redux/store";
 import "moment/locale/vi";
+import type { AppProps } from "next/app";
+import { createContext, ReactChild, useEffect, useRef, useState } from "react";
+import "react-loading-skeleton/dist/skeleton.css";
+import { useStore } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { PersistGate } from "redux-persist/lib/integration/react";
+import styled, { css } from "styled-components";
+import "tailwindcss/tailwind.css";
+import tw from "twin.macro";
+
+
+
 
 const Wrapper = styled.div<{ isPopup: boolean }>`
   ${tw``}

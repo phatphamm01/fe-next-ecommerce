@@ -1,4 +1,4 @@
-import { Ref, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useToggleAndClose = (
   ref: React.MutableRefObject<any>,

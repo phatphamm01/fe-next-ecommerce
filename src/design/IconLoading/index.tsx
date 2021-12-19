@@ -1,7 +1,6 @@
-import { CSSProperties, FC, Fragment } from "react";
-import { keyframes } from "styled-components";
+import { CSSProperties, FC } from "react";
+import styled, { keyframes } from "styled-components";
 import tw from "twin.macro";
-import styled from "styled-components";
 
 const IconLoadingContainer = styled.div`
   ${tw`relative w-full h-full`}

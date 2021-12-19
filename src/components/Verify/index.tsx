@@ -1,12 +1,12 @@
-import { FC, useContext, ReactChild } from "react";
-import tw from "twin.macro";
-import styled, { keyframes } from "styled-components";
-import Input from "@design/Input";
 import Button from "@design/Button";
+import Input from "@design/Input";
 import { PopupContext } from "@pages/_app";
-import { Formik } from "formik";
 import fetchUser from "@services/user/auth";
+import { Formik } from "formik";
 import { useRouter } from "next/router";
+import { FC, ReactChild, useContext } from "react";
+import styled, { keyframes } from "styled-components";
+import tw from "twin.macro";
 
 const top = keyframes`
   from {

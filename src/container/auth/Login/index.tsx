@@ -1,16 +1,16 @@
+import Verify from "@components/Verify";
 import Button from "@design/Button";
-
+import { PopupContext } from "@pages/_app";
+import fetchUser from "@services/user/auth";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
-import { PopupContext } from "@pages/_app";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
-import Verify from "@components/Verify";
-import fetchUser from "@services/user/auth";
-import { toast } from "react-toastify";
+
 
 const LoginForm = styled.form`
   ${tw`lg:mx-10 mx-20 mt-12 grid gap-4`}

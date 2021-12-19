@@ -1,8 +1,8 @@
 import Logo from "@design/Logo";
+import { useRouter } from "next/router";
 import { FC, useEffect } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { useRouter } from "next/router";
 
 const AuthContainer = styled.main`
   ${tw`h-[100vh] w-[100vw] flex items-center`}

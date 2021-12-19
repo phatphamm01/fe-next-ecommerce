@@ -1,7 +1,7 @@
+import moment, { Moment } from "moment";
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
-import moment, { Moment } from "moment";
 moment.locale("vi");
 const TableContainer = tw.div`inline-block border border-red-500 overflow-hidden rounded-xl`;
 const TableBox = tw.table`mx-auto rounded-xl text-center `;
