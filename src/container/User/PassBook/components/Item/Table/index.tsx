@@ -42,10 +42,16 @@ const Table: FC<ITable> = ({ data }) => {
       <TabelBox>
         <TBody>
           <TR>
-            <TD colSpan={2}>
+            <TD>
               <Box>
                 <Value>{data.passbook.option} Tháng</Value>
                 <Title>Thời hạn</Title>
+              </Box>
+            </TD>
+            <TD>
+              <Box>
+                <Value>{data.value} %</Value>
+                <Title>Lãi suất</Title>
               </Box>
             </TD>
           </TR>
@@ -66,14 +72,14 @@ const Table: FC<ITable> = ({ data }) => {
           <TR>
             <TD>
               <Box>
-                <Value>{moment(data.passbook.createAt).format("lll")}</Value>
+                <Value>{moment(data.passbook.createAt).format("LL")}</Value>
                 <Title>Ngày gửi</Title>
               </Box>
             </TD>
             <TD>
               <Box>
-                <Value>{moment(data.passbook.endAt).format("lll")}</Value>
-                <Title>Ngày rút</Title>
+                <Value>{moment(data.passbook.endAt).format("LL")}</Value>
+                <Title>Ngày đáo hạn</Title>
               </Box>
             </TD>
           </TR>
