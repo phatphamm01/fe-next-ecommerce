@@ -6,7 +6,7 @@ import { PopupContext } from "@pages/_app";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import Input from "../components/InputAuth";
+import Input from "../components/Input";
 import Layout from "../components/Layout";
 import Verify from "@components/Verify";
 import fetchUser from "@services/user/auth";

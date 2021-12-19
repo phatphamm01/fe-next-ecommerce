@@ -1,5 +1,5 @@
-import LinkNext from 'design/Link';
-import Image from 'next/image';
+import LinkNext from "@design/Link";
+import Image from "next/image";
 
 const Logo = () => {
   return (
