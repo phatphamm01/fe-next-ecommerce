@@ -1,11 +1,12 @@
-import Input from "@design/InputAuth";
 import Button from "@design/Button";
+import Input from "@design/InputAuth";
 import Link from "@design/Link";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
 import { FC, useContext, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import * as Yup from "yup";
 import { SignupContext } from "..";
 
 const StepOneContainer = styled.div`
@@ -51,19 +52,29 @@ const StepOne: FC<IStepOne> = () => {
         passwordConfirm: data?.password || ".Phat2001",
         phoneNumber: data?.phoneNumber || "0943987432",
       }}
-      //   vali dationSchema={
-      //     Yup.object().shape({
-      //     email: Yup.string()
-      //       .email("Must be a valid email")
-      //       .max(255)
-      //       .required("Please enter your email"),
-      //     password: Yup.string()
-      //       .min(6, "Password is more than 6 characters")
-      //       .max(30, "Username less than 20 characters")
-      //       .required("Please enter your password"),
-      //   })
-      // }
-
+      validationSchema={Yup.object().shape({
+        email: Yup.string()
+          .email("Chưa đúng định dạng Email")
+          .max(255)
+          .required("Vui lòng nhập email"),
+        password: Yup.string()
+          .required("Vui lòng nhập mật khẩu")
+          .min(8, "Mật khẩu phải lớn hơn 8 kí tự")
+          .matches(
+            /^(?=.*[A-Z])(?=.*[0-9])(?=.*[.!@#\$%\^&\*])/,
+            "Mật khẩu gồm 1 kí tự in hoa, 1 kí tự đặt biệt và 1 số"
+          ),
+        passwordConfirm: Yup.string().when("password", {
+          is: (val: string) => (val && val.length > 0 ? true : false),
+          then: Yup.string().oneOf(
+            [Yup.ref("password")],
+            "Mật khẩu xác thực không khớp"
+          ),
+        }),
+        phoneNumber: Yup.string()
+          .matches(phoneRegExp, "Số điện thoại không chính xác")
+          .required("Vui lòng nhập số điện thoại"),
+      })}
       onSubmit={async (payload: IDataStepOne) => {
         setData?.({ ...data, ...payload });
         setStepNumber?.(2);
@@ -144,3 +155,6 @@ const StepOne: FC<IStepOne> = () => {
 };
 
 export default StepOne;
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;

@@ -2,7 +2,6 @@ import checkNullObject from "@common/function/checkNullObject";
 import Button from "@design/Button";
 import Select from "@design/Select";
 import { useAppDispatch, useAppSelector } from "@hook/redux";
-import { PopupContext } from "@pages/_app";
 import { getDistrict, getProvice, getWard } from "@redux/slices/location";
 import fetchUser from "@services/user/auth";
 import { Formik } from "formik";
@@ -10,6 +9,7 @@ import { FC, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
+import * as Yup from "yup";
 import { SignupContext } from "..";
 
 const StepTwoContainer = styled.div`
@@ -49,7 +49,8 @@ const StepTwo: FC<IStepTwo> = () => {
   const [clearWard, setClearWard] = useState<() => void>();
 
   const { data, setData, setStepNumber } = useContext(SignupContext);
-  const { setHtml } = useContext(PopupContext);
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (checkNullObject(district)) {
       dispatch(getProvice());
@@ -94,30 +95,28 @@ const StepTwo: FC<IStepTwo> = () => {
           name: "",
         },
       }}
-      // validationSchema={Yup.object().shape({
-      //   email: Yup.string()
-      //     .email("Must be a valid email")
-      //     .max(255)
-      //     .required("Please enter your email"),
-      //   password: Yup.string()
-      //     .min(6, "Password is more than 6 characters")
-      //     .max(30, "Username less than 20 characters")
-      //     .required("Please enter your password"),
-      // })}
+      validationSchema={Yup.object().shape({
+        province: Yup.object()
+          .required("Vui lòng chọn tỉnh/thành phố")
+          .nullable(),
+        district: Yup.object().required("Vui lòng chọn quận/huyện").nullable(),
+        ward: Yup.object().required("Vui lòng chọn phường/xã").nullable(),
+      })}
       onSubmit={async (payload: IDataStepTwo) => {
-        const { district, province, ward } = payload;
-        let params = {
-          ...data,
-          address: `${ward?.name} - ${district?.name} - ${province?.name}`,
-        };
-
-        let email = data?.email || "admin@summon.com";
-
         try {
-          let response = await fetchUser.signup(params);
+          setLoading(true);
+          setData?.({ ...data, ...payload });
+          const { district, province, ward } = payload;
+          let params = {
+            ...data,
+            address: `${ward?.name} - ${district?.name} - ${province?.name}`,
+          };
+          await fetchUser.signup(params);
           setStepNumber?.(4);
         } catch (error: any) {
           toast.error(error);
+        } finally {
+          setLoading(false);
         }
       }}
     >
@@ -139,8 +138,7 @@ const StepTwo: FC<IStepTwo> = () => {
           setFieldValue("ward", data?.ward, false);
         }, []);
 
-        const handleChangeStepOne = () => {
-          console.log(values);
+        const handleChangeStepTwo = () => {
           setData?.({ ...data, ...values });
           setStepNumber?.(2);
         };
@@ -217,12 +215,12 @@ const StepTwo: FC<IStepTwo> = () => {
               </InputBox>
 
               <ButtonContainer>
-                <Button type="submit" variant="container">
+                <Button disabled={loading} type="submit" variant="container">
                   Tiếp tục
                 </Button>
                 <Button
                   type="button"
-                  onClick={handleChangeStepOne}
+                  onClick={handleChangeStepTwo}
                   variant="text"
                 >
                   Quay lại

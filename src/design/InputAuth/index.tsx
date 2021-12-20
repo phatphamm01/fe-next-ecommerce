@@ -16,7 +16,7 @@ const InputLeft = styled.div`
   ${tw`absolute top-1/2 -translate-y-1/2 right-0`}
 `;
 const ErrorMessage = styled.div`
-  ${tw`text-red-500 pt-1 h-3`}
+  ${tw`text-red-500 pt-1 min-h-[0.75rem] text-xs`}
 `;
 
 interface IInput {
@@ -61,6 +61,7 @@ const Input = ({
         />
         <InputLeft>{iconLeft}</InputLeft>
       </InputBox>
+
       {<ErrorMessage>{errors && touched ? errors : ""}</ErrorMessage>}
     </InputContainer>
   );

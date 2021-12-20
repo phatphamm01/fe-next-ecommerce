@@ -1,6 +1,6 @@
 import Logo from "@design/Logo";
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -30,13 +30,10 @@ const ImageContainer = styled.div`
 const Layout: FC = ({ children }) => {
   const router = useRouter();
 
-  useEffect(() => {
-    const checkToken = localStorage.getItem("token");
-    if (checkToken) {
-      debugger;
-      router.push("/user");
-    }
-  }, []);
+  const checkToken = localStorage.getItem("token");
+  if (checkToken) {
+    router.push("/user");
+  }
 
   return (
     <AuthContainer>

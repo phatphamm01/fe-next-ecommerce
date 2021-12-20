@@ -1,9 +1,4 @@
-import {
-  Dispatch,
-  FC, SetStateAction,
-  useEffect,
-  useRef
-} from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import ReactSelect, { GetOptionLabel, StylesConfig } from "react-select";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -16,7 +11,7 @@ const SelectBox = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  ${tw`text-red-500 pt-1 h-3`}
+  ${tw`text-red-500 pt-1 min-h-[0.75rem] text-xs`}
   background: #f4f5f6;
 `;
 
@@ -95,13 +90,12 @@ const Select: FC<ISelect> = ({
   const ref = useRef<any>();
 
   useEffect(() => {
-    // console.log(selected);
-    console.log(defaultValue);
-  }, []);
-
-  useEffect(() => {
     funcClear?.(() => handleClear);
   }, [ref]);
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   const handleClear = () => {
     ref?.current?.clearValue();
@@ -130,7 +124,7 @@ const Select: FC<ISelect> = ({
           getOptionValue={getOptionValue}
           ref={ref}
         />
-        {<ErrorMessage>{errors && touched ? errors : ""}</ErrorMessage>}
+        {<ErrorMessage>{errors ? errors : ""}</ErrorMessage>}
       </SelectBox>
     </SelectContainer>
   );

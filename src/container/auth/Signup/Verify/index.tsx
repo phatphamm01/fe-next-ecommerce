@@ -46,20 +46,20 @@ const StepTwo: FC<IStepTwo> = () => {
         <Button
           type="button"
           onClick={() => {
-            setStepNumber?.(3);
-          }}
-          variant="text"
-        >
-          Quay lại
-        </Button>
-        <Button
-          type="button"
-          onClick={() => {
             router.push("/login");
           }}
           variant="container"
         >
           Đăng nhập
+        </Button>
+        <Button
+          type="button"
+          onClick={() => {
+            setStepNumber?.(3);
+          }}
+          variant="text"
+        >
+          Quay lại
         </Button>
       </Form>
     </StepTwoContainer>

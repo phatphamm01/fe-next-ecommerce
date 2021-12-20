@@ -1,6 +1,6 @@
 import checkNullObject from "@common/function/checkNullObject";
 import convertStringToMoney, {
-  numberToMoneyVer2
+  numberToMoneyVer2,
 } from "@common/function/convertStringToMoney";
 import Button from "@design/Button";
 import InputUser from "@design/InputUser";
@@ -133,7 +133,6 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
         value.option !== 0 ? [...result, value] : result,
       []
     );
-    console.log(handleData);
 
     setOption(handleData);
   };

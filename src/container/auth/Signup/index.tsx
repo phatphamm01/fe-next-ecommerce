@@ -1,13 +1,16 @@
 import {
   createContext,
   Dispatch,
-  SetStateAction, useState
+  SetStateAction,
+  useEffect,
+  useState,
 } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Layout from "../components/Layout";
 import StepOne from "./StepOne";
-import { default as StepThree, default as StepTwo } from "./StepThree";
+import StepThree from "./StepThree";
+import StepTwo from "./StepTwo";
 import Verify from "./Verify";
 
 const SignupForm = styled.div`
@@ -46,6 +49,8 @@ export const SignupContext = createContext<ISignupContext>({
 const Signup = () => {
   const [data, setdata] = useState<IData>();
   const [stepNumber, setStepNumber] = useState<number>(1);
+
+  useEffect(() => {}, []);
 
   return (
     <Layout>

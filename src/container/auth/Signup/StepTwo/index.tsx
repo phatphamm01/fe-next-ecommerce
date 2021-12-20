@@ -1,9 +1,10 @@
-import Input from "@design/InputAuth";
 import Button from "@design/Button";
+import Input from "@design/InputAuth";
 import { Formik } from "formik";
 import { FC, useContext } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import * as Yup from "yup";
 import { SignupContext } from "..";
 
 const StepTwoContainer = styled.div`
@@ -21,7 +22,7 @@ interface IStepTwo {}
 export interface IDataStepTwo {
   firstName?: string;
   lastName?: string;
-  cmnd: string;
+  CMND: string;
 }
 
 const StepTwo: FC<IStepTwo> = () => {
@@ -32,18 +33,16 @@ const StepTwo: FC<IStepTwo> = () => {
       initialValues={{
         firstName: data?.firstName || "Phát",
         lastName: data?.lastName || "Phạm",
-        cmnd: "123456789",
+        CMND: data?.CMND || "123456789",
       }}
-      // validationSchema={Yup.object().shape({
-      //   email: Yup.string()
-      //     .email("Must be a valid email")
-      //     .max(255)
-      //     .required("Please enter your email"),
-      //   password: Yup.string()
-      //     .min(6, "Password is more than 6 characters")
-      //     .max(30, "Username less than 20 characters")
-      //     .required("Please enter your password"),
-      // })}
+      validationSchema={Yup.object().shape({
+        firstName: Yup.string().max(255).required("Vui lòng nhập tên"),
+        lastName: Yup.string().max(255).required("Vui lòng nhập họ"),
+        CMND: Yup.string()
+          .length(9, "Số CMND không chính xác")
+          .matches(/(?=.*[0-9])/, "Số CMND không chính xác")
+          .required("Vui lòng nhập số CMND"),
+      })}
       onSubmit={async (payload: IDataStepTwo) => {
         setData?.({ ...data, ...payload });
         setStepNumber?.(3);
@@ -91,14 +90,14 @@ const StepTwo: FC<IStepTwo> = () => {
                 />
 
                 <Input
-                  name="cmnd"
+                  name="CMND"
                   placeholder="CMND"
                   type="text"
-                  value={values.cmnd}
+                  value={values.CMND}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  errors={errors.cmnd}
-                  touched={touched.cmnd}
+                  errors={errors.CMND}
+                  touched={touched.CMND}
                 />
               </div>
 

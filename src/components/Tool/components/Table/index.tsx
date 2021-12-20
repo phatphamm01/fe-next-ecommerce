@@ -55,8 +55,6 @@ const Table = () => {
     let { rawMonths, residualMonth, day } = handleDate(end, start);
     handleRawMonth(date1, rawMonths);
 
-    console.log(rawMonthsData?.[rawMonthsData?.length - 1]?.day);
-
     handleDay(
       residualMonth,
       day,
@@ -96,8 +94,6 @@ const Table = () => {
     centerDay?: Moment
   ) => {
     if (!centerDay) {
-      console.log(123);
-
       return;
     }
 
