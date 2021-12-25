@@ -14,7 +14,7 @@ export type Method =
   | "link"
   | "unlink";
 
-axios.defaults.baseURL = "https://server-one-kappa.vercel.app";
+axios.defaults.baseURL = "https://server-delta-one.vercel.app";
 
 class AxiosService {
   #instance: AxiosInstance;
