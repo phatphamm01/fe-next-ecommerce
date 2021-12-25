@@ -4,7 +4,8 @@ import { PopupContext } from "@pages/_app";
 import fetchUser from "@services/user/auth";
 import { Formik } from "formik";
 import { useRouter } from "next/router";
-import { FC, ReactChild, useContext } from "react";
+import { FC, ReactChild, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import styled, { keyframes } from "styled-components";
 import tw from "twin.macro";
 
@@ -64,6 +65,7 @@ interface IVerify {
 const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
   const router = useRouter();
   const { setHtml, closePopup } = useContext(PopupContext);
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <VerifyContainer>
       <Header>
@@ -77,6 +79,7 @@ const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
         }}
         onSubmit={async (values) => {
           try {
+            setLoading(true);
             const { data } = await fetchUser.verify(values);
             let { accessToken = "" } = data;
 
@@ -85,7 +88,11 @@ const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
               router.push("/user");
             }
             closePopup?.();
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error || error.message || "Error");
+          } finally {
+            setLoading(false);
+          }
         }}
       >
         {(props) => {
@@ -119,7 +126,7 @@ const Verify: FC<IVerify> = ({ content, headerContent, headerTitle }) => {
                 >
                   Trở lại
                 </Button>
-                <Button type="submit" variant="container">
+                <Button disabled={loading} type="submit" variant="container">
                   Xác nhận
                 </Button>
               </MainControl>

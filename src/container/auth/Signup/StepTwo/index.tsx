@@ -39,7 +39,6 @@ const StepTwo: FC<IStepTwo> = () => {
         firstName: Yup.string().max(255).required("Vui lòng nhập tên"),
         lastName: Yup.string().max(255).required("Vui lòng nhập họ"),
         CMND: Yup.string()
-          .length(9, "Số CMND không chính xác")
           .matches(/(?=.*[0-9])/, "Số CMND không chính xác")
           .required("Vui lòng nhập số CMND"),
       })}

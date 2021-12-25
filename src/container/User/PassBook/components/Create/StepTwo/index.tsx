@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { CreatePassBookContext } from "..";
+import checkNullObject from "../../../../../../common/function/checkNullObject";
 import Table from "./Table";
 
 const StepTwoContainer = styled.div`
@@ -61,7 +62,9 @@ const StepTwo: FC<ICreate> = ({ closePopup, handleGetAllPassbook }) => {
       const { objectreponse } = await updateCartApi(Number(bookNumber));
       setDataTable(objectreponse);
       setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
+      setDataTable(null);
+      toast.error(error);
       setLoading(false);
     }
   };
@@ -108,7 +111,7 @@ const StepTwo: FC<ICreate> = ({ closePopup, handleGetAllPassbook }) => {
           </Message>
         </InputBox>
         <TableBox>
-          {bookNumber && !loading ? (
+          {!checkNullObject(dataTable) && bookNumber && !loading ? (
             <Table {...dataTable} numberPassBook={Number(bookNumber)} />
           ) : (
             <Skeleton style={{ height: "100%" }} />
