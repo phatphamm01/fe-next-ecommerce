@@ -1,14 +1,15 @@
 import Verify from "@components/Verify";
 import Button from "@design/Button";
+import Input from "@design/InputAuth";
 import { PopupContext } from "@pages/_app";
 import fetchUser from "@services/user/auth";
+import "antd/dist/antd.css";
 import { Formik } from "formik";
 import { Eye, EyeSlash } from "iconsax-react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import tw from "twin.macro";
-import Input from "../../../design/InputAuth";
 import Layout from "../components/Layout";
 
 const LoginForm = styled.form`
@@ -76,8 +77,8 @@ const Login = () => {
     <Layout>
       <Formik
         initialValues={{
-          email: "minhphatdev@gmail.com",
-          password: ".Phat2001",
+          email: "",
+          password: "",
         }}
         onSubmit={async (values) => {
           try {

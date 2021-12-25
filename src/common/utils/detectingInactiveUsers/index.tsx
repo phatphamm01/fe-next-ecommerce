@@ -1,9 +1,14 @@
-let INACTIVE_USER_TIME_THRESHOLD = 2 * 1000;
+import { Modal } from "antd";
+import router from "next/router";
 
-const DetectingInactiveUsers = (function () {
+let INACTIVE_USER_TIME_THRESHOLD = 1 * 1000 * 60;
+
+const DetectingInactiveUsers = (() => {
   let userActivityTimeout: any = null;
 
   let resetUserActivityTimeout = () => {
+    console.log(123);
+
     clearTimeout(userActivityTimeout);
 
     userActivityTimeout = setTimeout(() => {
@@ -12,15 +17,22 @@ const DetectingInactiveUsers = (function () {
   };
 
   let inactiveUserAction = () => {
-    console.log("LOGOUT");
+    localStorage.clear();
+    router.push("/login");
+    Modal.info({
+      width: "500px",
+      title: "Thông báo",
+
+      content: "Tài khoản của bạn đã hết thời hạn vui lòng đăng nhập lại",
+      onOk() {},
+    });
   };
 
   let add = () => {
-    let isUser = true;
-    console.log(123);
-    if (isUser) {
-      console.log(123);
+    let isUser = localStorage.getItem("token");
+    console.log(isUser);
 
+    if (isUser) {
       window.addEventListener("mousemove", resetUserActivityTimeout);
       window.addEventListener("scroll", resetUserActivityTimeout);
       window.addEventListener("keydown", resetUserActivityTimeout);

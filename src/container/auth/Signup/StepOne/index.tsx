@@ -47,10 +47,10 @@ const StepOne: FC<IStepOne> = () => {
   return (
     <Formik
       initialValues={{
-        email: data?.email || "minhphatdev@gmail.com",
-        password: data?.password || ".Phat2001",
-        passwordConfirm: data?.password || ".Phat2001",
-        phoneNumber: data?.phoneNumber || "0943987432",
+        email: data?.email || "",
+        password: data?.password || "",
+        passwordConfirm: data?.password || "",
+        phoneNumber: data?.phoneNumber || "",
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()

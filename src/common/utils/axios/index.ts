@@ -52,7 +52,10 @@ class AxiosService {
         return response;
       },
       (error: AxiosError) => {
-        if (error.message === "Request failed with status code 401") {
+        if (
+          error.message === "Request failed with status code 401" &&
+          error.response?.data.message !== "Please Check Account"
+        ) {
           localStorage.clear();
           location.href = "/login";
         }

@@ -42,8 +42,8 @@ const StepOne: FC<IStepOne> = () => {
   return (
     <Formik
       initialValues={{
-        email: "minhphatdev@gmail.com",
-        password: ".Phat2001",
+        email: "",
+        password: "",
       }}
       onSubmit={async (values) => {
         setLoading(true);

@@ -10,7 +10,7 @@ const InputBox = styled.div`
 `;
 const InputText = styled.input`
   ${tw`outline-none w-full pl-[10px] pb-[8px] pt-3 text-base font-medium placeholder:text-base placeholder:font-medium  placeholder:text-gray-600 text-gray-600`}
-  background-color: #f4f5f6;
+  background-color: transparent;
 `;
 const InputLeft = styled.div`
   ${tw`absolute top-1/2 -translate-y-1/2 right-0`}

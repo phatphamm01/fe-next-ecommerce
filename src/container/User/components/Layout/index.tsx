@@ -1,3 +1,4 @@
+import DetectingInactiveUsers from "@common/utils/detectingInactiveUsers";
 import useToggleAndCloseVer2 from "@hook/useToggleAndCloseVer2";
 import { FC, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
@@ -31,6 +32,13 @@ const Layout: FC<ILayout> = ({ children }) => {
   const handleNavOpen = () => {
     setIsActive(!isActive);
   };
+
+  useEffect(() => {
+    DetectingInactiveUsers.add();
+    return () => {
+      DetectingInactiveUsers.remove();
+    };
+  }, []);
 
   return (
     <LayoutContainer>

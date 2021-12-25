@@ -31,9 +31,9 @@ const StepTwo: FC<IStepTwo> = () => {
   return (
     <Formik
       initialValues={{
-        firstName: data?.firstName || "Phát",
-        lastName: data?.lastName || "Phạm",
-        CMND: data?.CMND || "123456789",
+        firstName: data?.firstName || "",
+        lastName: data?.lastName || "",
+        CMND: data?.CMND || "",
       }}
       validationSchema={Yup.object().shape({
         firstName: Yup.string().max(255).required("Vui lòng nhập tên"),

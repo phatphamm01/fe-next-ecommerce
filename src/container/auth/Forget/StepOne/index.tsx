@@ -33,7 +33,7 @@ const StepOne: FC<IStepOne> = () => {
   return (
     <Formik
       initialValues={{
-        email: "minhphatdev@gmail.com",
+        email: "",
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
