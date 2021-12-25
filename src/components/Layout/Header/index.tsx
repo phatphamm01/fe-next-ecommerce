@@ -116,12 +116,12 @@ const Header = () => {
           </NavContainer>
 
           <AuthContainr>
-            <Button variant="outlined">
-              <LinkNext href="/login">Đăng nhập</LinkNext>
-            </Button>
-            <Button style={{ flexGrow: 1 }} variant="container">
-              <LinkNext href="/signup">Mở tài khoản</LinkNext>
-            </Button>
+            <LinkNext href="/login">
+              <Button variant="outlined">Đăng nhập</Button>
+            </LinkNext>
+            <LinkNext href="/signup">
+              <Button variant="container">Mở tài khoản</Button>
+            </LinkNext>
           </AuthContainr>
         </NavMain>
       </HeaderContainer>

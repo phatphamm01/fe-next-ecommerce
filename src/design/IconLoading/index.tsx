@@ -33,7 +33,7 @@ const LoadingRotate = styled.div<{ border: number; widtH: number }>`
 `;
 const LoadingBox = styled.div<{ border: number; widtH: number }>`
   ${tw`rounded-full z-10`}
-  border: ${({ border }) => border + "px"} solid #dfdfdf;
+  border: ${({ border }) => border + "px"} solid #fcdede;
   width: ${({ widtH }) => widtH + "px"};
   aspect-ratio: 1 / 1;
 `;

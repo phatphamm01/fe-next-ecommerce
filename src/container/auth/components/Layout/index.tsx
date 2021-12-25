@@ -1,6 +1,6 @@
 import Logo from "@design/Logo";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -27,7 +27,11 @@ const ImageContainer = styled.div`
   }
 `;
 
-const Layout: FC = ({ children }) => {
+interface ILayout {
+  styleAuthBox?: CSSProperties;
+}
+
+const Layout: FC<ILayout> = ({ styleAuthBox, children }) => {
   const router = useRouter();
 
   const checkToken = localStorage.getItem("token");
@@ -37,7 +41,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <AuthContainer>
-      <AuthBox>
+      <AuthBox style={styleAuthBox}>
         <ImageContainer>
           <img src="https://cdn.dribbble.com/users/949981/screenshots/16123153/media/1063bc72b4c7d1b694aeb93e5a300a2f.png?compress=1&resize=1200x900" />
         </ImageContainer>

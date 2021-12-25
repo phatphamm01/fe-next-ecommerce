@@ -17,6 +17,7 @@
     "@tailwindcss/line-clamp": "^0.2.2",
     "@types/color": "^3.0.2",
     "accounting": "^0.4.1",
+    "antd": "^4.17.4",
     "axios": "^0.24.0",
     "bignumber.js": "^9.0.1",
     "formik": "^2.2.9",

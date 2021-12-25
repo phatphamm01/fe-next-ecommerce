@@ -11,7 +11,6 @@ import tw from "twin.macro";
 import Input from "../../../design/InputAuth";
 import Layout from "../components/Layout";
 
-
 const LoginForm = styled.form`
   ${tw`lg:mx-10 mx-20 mt-12 grid gap-4`}
 `;
@@ -36,6 +35,7 @@ const Link = styled.a`
 const Login = () => {
   const { setHtml, closePopup } = useContext(PopupContext);
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleShowPassword = () => {
     setIsShowPassword(!isShowPassword);
@@ -81,11 +81,14 @@ const Login = () => {
         }}
         onSubmit={async (values) => {
           try {
-            const response = await fetchUser.signin(values);
+            setLoading(true);
+            await fetchUser.signin(values);
 
             handleVerify(values.email);
           } catch (error: any) {
             toast.error(error);
+          } finally {
+            setLoading(false);
           }
         }}
       >
@@ -127,15 +130,19 @@ const Login = () => {
                   <input type="checkbox" name="savepass" id="savepass" />
                   <label htmlFor="savepass">Lưu mật khẩu</label>
                 </SavePass>
-                <ForgetPass>Quên mật khẩu</ForgetPass>
+                <ForgetPass>
+                  <Link href="/forget">Quên mật khẩu</Link>
+                </ForgetPass>
               </FormControl>
               <ButtonContainer>
-                <Button type="submit" variant="container">
+                <Button disabled={loading} type="submit" variant="container">
                   Đăng nhập
                 </Button>
-                <Button type="button" variant="text">
-                  <Link href="/signup">Đăng kí</Link>
-                </Button>
+                <Link href="/signup">
+                  <Button type="button" variant="text">
+                    Đăng kí
+                  </Button>
+                </Link>
               </ButtonContainer>
             </LoginForm>
           );

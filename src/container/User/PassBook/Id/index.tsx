@@ -11,8 +11,6 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import Table from "./components/Table";
 
-
-
 const PassBookContainer = styled.div`
   ${tw`max-w-[1000px] mx-auto `}
 `;
@@ -118,14 +116,16 @@ const PassBook: FC<IPassBook> = () => {
                 <Link href={"/user/pass-book"}>Quay lại</Link>
               </Button>
             </ButtonBox>
-            <ButtonBox>
-              <Button
-                onClick={() => handleWithdrawal(id as string)}
-                variant="container"
-              >
-                Xác nhận rút
-              </Button>
-            </ButtonBox>
+            {!passbook?.passbook.status && (
+              <ButtonBox>
+                <Button
+                  onClick={() => handleWithdrawal(id as string)}
+                  variant="container"
+                >
+                  Xác nhận rút
+                </Button>
+              </ButtonBox>
+            )}
           </Control>
         </ControlBox>
 

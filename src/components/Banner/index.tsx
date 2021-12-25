@@ -50,9 +50,9 @@ const Banner = () => {
             quà hấp dẫn và nhiều ưu đãi khác
           </Description>
           <ButtonContainer>
-            <Button variant="container">
-              <LinkNext href="/signup">Đăng kí ngay</LinkNext>
-            </Button>
+            <LinkNext href="/signup">
+              <Button variant="container">Đăng kí ngay</Button>
+            </LinkNext>
           </ButtonContainer>
         </ContentContainer>
       </BannerMain>

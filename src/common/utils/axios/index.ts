@@ -86,6 +86,13 @@ class AxiosService {
       throw error;
     }
   }
+  async put(url: string, data?: IDataAxios): IResponseAxios {
+    try {
+      return await this.#instance.put(url, data);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new AxiosService();

@@ -3,7 +3,9 @@ import AxiosService from "@common/utils/axios";
 const url = {
   signup: "signup",
   signin: "signin",
+  forget: "forgot-password",
   verify: "check-verification-code",
+  resetPassword: "reset-password",
   get: "getuserbytoken",
 };
 
@@ -14,6 +16,18 @@ const fetchUser = {
   },
   async signin(payload: any) {
     const response = await AxiosService.post(url.signin, payload);
+    return response;
+  },
+  async forget(payload: { email: string }) {
+    const response = await AxiosService.post(url.forget, payload);
+    return response;
+  },
+  async resetPassword(payload: {
+    code?: string;
+    password?: string;
+    passwordConfirm?: string;
+  }) {
+    const response = await AxiosService.put(url.resetPassword, payload);
     return response;
   },
   async verify(payload: any) {

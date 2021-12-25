@@ -1,7 +1,5 @@
 import checkNullObject from "@common/function/checkNullObject";
-import convertStringToMoney, {
-  numberToMoneyVer2,
-} from "@common/function/convertStringToMoney";
+import { numberToMoneyVer2 } from "@common/function/convertStringToMoney";
 import Button from "@design/Button";
 import InputUser from "@design/InputUser";
 import fetchCart from "@services/cart";
@@ -44,6 +42,15 @@ const Label = styled.p`
 `;
 const TableBox = styled.div`
   ${tw`h-[250px] mt-4`}
+`;
+const SuggestBox = styled.div`
+  ${tw`mb-1`}
+`;
+const SuggestList = styled.div`
+  ${tw`flex gap-2`}
+`;
+const SuggestItem = styled.div`
+  ${tw`bg-red-200 px-2 py-1 text-xs rounded-xl cursor-pointer`}
 `;
 
 interface ICreate {
@@ -100,7 +107,7 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     let numberClear: any = numb ? numb.join("") : "";
     numberClear = Number(numberClear);
 
-    let totalProfit = (Number(numberClear) * profit) / 100 / 12;
+    let totalProfit = (Number(numberClear) * profit * month) / 100 / 12;
     let result = Number(numberClear) + totalProfit;
 
     const dataTable = {
@@ -173,6 +180,25 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
     }
   };
 
+  const handleInputtoNumber = (input: string) => {
+    let numb = input.match(/\d|e/g);
+    let numberClear: any = numb ? numb.join("") : "";
+    return Number(numberClear);
+  };
+
+  const onChange = (input: string) => {
+    let value = handleInputtoNumber(input);
+
+    if (value > 1000000000) {
+      toast.error(
+        "Số tiền nhập vào phải bé hơn " + numberToMoneyVer2(1000000000) + "VND"
+      );
+      return;
+    }
+
+    setInput(numberToMoneyVer2(value) || "");
+  };
+
   return (
     <StepOneContainer>
       <CraeteBox>
@@ -182,12 +208,30 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
             name="money"
             type="text"
             value={input}
-            onChange={(e) => {
-              setInput(convertStringToMoney(e.target.value) || "");
-            }}
+            onChange={(e) => onChange(e.target.value)}
             placeholder="Nhập số tiền > 1.000.000"
           />
         </InputBox>
+        <SuggestBox>
+          {input && (
+            <SuggestList>
+              {suggestList.map((value) => {
+                let title = handleInputtoNumber(input) * value;
+                if (title <= 1000000000) {
+                  return (
+                    <SuggestItem
+                      onClick={() => {
+                        onChange(handleInputtoNumber(input) * value + "");
+                      }}
+                    >
+                      {numberToMoneyVer2(title)}
+                    </SuggestItem>
+                  );
+                }
+              })}
+            </SuggestList>
+          )}
+        </SuggestBox>
         <TermBox>
           <Label>Bạn muốn kỳ hạn bao nhiêu tháng ?</Label>
           <TermList>
@@ -207,7 +251,8 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
           </TermList>
         </TermBox>
         <TableBox>
-          {!checkNullObject(dataTable) ? (
+          {!checkNullObject(dataTable) &&
+          handleInputtoNumber(input) >= 1000000 ? (
             <Table {...dataTable} />
           ) : (
             <Skeleton style={{ height: "100%" }} />
@@ -229,3 +274,4 @@ const StepOne: FC<ICreate> = ({ closePopup }) => {
 export default StepOne;
 
 const termList = [1, 3, 6, 12, 18, 24, 36];
+const suggestList = [10000, 100000, 1000000];

@@ -1,7 +1,5 @@
 import checkNullObject from "@common/function/checkNullObject";
-import {
-  numberToMoneyVer2
-} from "@common/function/convertStringToMoney";
+import { numberToMoneyVer2 } from "@common/function/convertStringToMoney";
 import Box from "@design/Box";
 import Button from "@design/Button";
 import Link from "@design/Link";
@@ -100,17 +98,24 @@ const Item: FC<IItem> = ({ data }) => {
       <ItemStart>Ngày bắt đầu: {moment(data.createAt).format("L")}</ItemStart>
       <ItemEnd>Ngày kết thúc: {moment(data.endAt).format("L")}</ItemEnd>
       <ItemControl>
-        <Button
-          disabled={loading}
-          onClick={() => handleGetDetailPassbook()}
-          variant="outlined"
-        >
-          Xem chi tiết
-        </Button>
-
         {!data.status && (
-          <Button variant="container">
-            <Link href={"/user/pass-book/" + data._id}>Rút tiền</Link>
+          <>
+            <Button
+              disabled={loading}
+              onClick={() => handleGetDetailPassbook()}
+              variant="outlined"
+            >
+              Xem chi tiết
+            </Button>
+
+            <Button variant="container">
+              <Link href={"/user/pass-book/" + data._id}>Rút tiền</Link>
+            </Button>
+          </>
+        )}
+        {data.status && (
+          <Button variant="outlined">
+            <Link href={"/user/pass-book/" + data._id}>Xem chi tiết</Link>
           </Button>
         )}
       </ItemControl>
