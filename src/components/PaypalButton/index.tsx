@@ -1,7 +1,7 @@
 import {
   PayPalButtons,
   PayPalButtonsComponentProps,
-  PayPalScriptProvider
+  PayPalScriptProvider,
 } from "@paypal/react-paypal-js";
 import fetchPaypal from "@services/paypal";
 import { FC } from "react";
@@ -69,7 +69,7 @@ const Paypal: FC<IPaypal> = ({ price, moneyVND, closePopup }) => {
           components: "buttons",
           currency: "USD",
           "client-id":
-            "AUYYe_jA-9FTUNZF-UFRISfMvUAnKTzxAb1pELVDW36PaFFvg_a3YXGJfgrc32USF79FL3C59jTluzvc",
+            "AcAuqsDsHD2c1oLtDIKmJ1MI-BA6uQ-pfMi5HPRiO2O5lTYzGGNsLWsFlY8m8IhH0YVGyRnDeQ1AIekB",
         }}
       >
         <PayPalButtons
